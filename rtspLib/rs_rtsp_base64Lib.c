@@ -174,7 +174,7 @@ int RTSP_Media_Para_SetSeqBase64(int chn, char* pBuff, int len)
     	dbg(Err, DbgNoPerror, "RTSP_CheckChn error\n");
         return GS_FAIL;
     }
-    //TODO §Û
+    //TODO Ð¹
     if ( l_RTSP_Media_Para[chn].bSetSeq == False )
     {
         if (l_RTSP_Media_Para[chn].pSeqBase64 != NULL)

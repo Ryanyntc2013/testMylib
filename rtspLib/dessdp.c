@@ -42,10 +42,10 @@ static int  sdp_write_header(char *buff, int size, struct sdp_session_level *s)
 	return len;
 }
 
-//base64±àÂëº¯Êı
+//base64ç¼–ç å‡½æ•°
 /***************************************************
-¹¦ÄÜ£ºbase64±àÂëº¯Êı
-·µ»Ø£ºvoid
+åŠŸèƒ½ï¼šbase64ç¼–ç å‡½æ•°
+è¿”å›ï¼švoid
 ***************************************************/
 static void base64_encode(char *in, const int in_len, char *out, int out_len)
 {

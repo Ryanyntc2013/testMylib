@@ -66,14 +66,14 @@ typedef struct RtspSvr_s
 	int	    	clientCnt[MAX_VOD_CHN];
 	VodSvrType_e		svrType;
 	int         	udpSendActive;
-	int                     pos;//¿ªÆôµÄÏß³ÌÊı
+	int                     pos;//å¼€å¯çš„çº¿ç¨‹æ•°
     //Pause_Handle		hPause;
     //Rendezvous_Handle 	rvInit;
     //Rendezvous_Handle 	rvExit;
 	pthread_mutex_t		rtspListMutex;
 }RtspSvr_t;
 
-/* ½âÎörtsp url */
+/* è§£ærtsp url */
 int RTSP_ParseUrl(int *port, char *server, char *fileName, const char *url);
 
 

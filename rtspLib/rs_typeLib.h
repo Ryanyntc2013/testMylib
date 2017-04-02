@@ -47,7 +47,7 @@ extern "C"{
 #include <time.h>
 //#include "rs_syslog.h"
 
-/* h264·Ú */
+/* h264æ±¾ */
 //#define 	CODEC_01_00_00_18	        	1
 //#define 	CODEC_01_02_00_05	        	1
 //#define 	CODEC_02_00_00_04	        	1	//* 1080p@30fps

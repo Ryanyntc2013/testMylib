@@ -119,7 +119,7 @@ typedef struct RtpHdr_s
 typedef enum RtpSenderType
 {
 	RTP_SENDER_UNICAST	    = 0,     /*  */
-	RTP_SENDER_MULTICAST	= 1,    /* φε */
+	RTP_SENDER_MULTICAST	= 1,    /* ι²₯ */
 	RTP_SENDER_BROADCAST	= 3,    /*  */
 }RtpSenderType_e;
 
@@ -185,7 +185,7 @@ typedef struct RtpUdpSender_s
 }RtpUdpSender_t;
 
 #define QUANT_TABLE_LEN		64
-#define MJPEG_RTP_LEN		888//(892-4)   //ljh ¦Λ4
+#define MJPEG_RTP_LEN		888//(892-4)   //ljh Ξ»4
 
 typedef struct JpegHdr_s
 {
@@ -215,15 +215,15 @@ typedef struct JpegQTable_s
 	QTalbe_t	table[4];
 	char            *scan_data;         /* JPEG */
 	int         	scan_data_len;      /* JPEG */
-	u8          	interval[2];        /* ¦Λ */
+	u8          	interval[2];        /* Ξ» */
 	u8          	unused[2];
 }JpegQTable_t;
 
 typedef struct JpegRestart_s{
-	u8	    	interval[2];        /* ¦Λ */
+	u8	    	interval[2];        /* Ξ» */
 	u16	    	f:1;                /* F */
 	u16	    	l:1;                /* I */
-	u16	    	count:14;           /* ¦Λ */
+	u16	    	count:14;           /* Ξ» */
 }JpegRestart_t;
 
 

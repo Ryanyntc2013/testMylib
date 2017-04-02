@@ -2187,7 +2187,7 @@ void *Rtsp_svrThread(void *pArgs)
 	return NULL;
 }
 
-//实时视频流协议
+//
 int rtspServerStart(int port)
 {
 	RtspSvr_t *pRtspSvr = NULL;

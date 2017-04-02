@@ -578,7 +578,7 @@ int USB_SD_DeviceDetect(void)
 {
 	int mask  = 0;
 
-    /* õô(umount)§Õ */
+    /* è±¸(umount)Ð´ */
 	if(0 == DeviceDetect(DRV_USB) && 0 != DeviceDetect(UMOUNT_USB_FLAG_FILE)){
     	mask |= USB_DETECT_BIT;
     }
@@ -809,8 +809,8 @@ u32	Time_GetMsec(void)
 	return msec;
 }
 
-/* =================   /etc/TZ §Ö ==============
- * @output	    : pTzEnv /etc/TZ §Ö "TZ=" 
+/* =================   /etc/TZ Ðµ ==============
+ * @output	    : pTzEnv /etc/TZ Ðµ "TZ=" 
  *                 :  buf 
  * @return	    : 
  */
@@ -841,9 +841,9 @@ int get_tzenv_buf(char *pTzEnv)
 
 /* ================  envTZ  ===========================
  * @return	    :      	enTimeZoneUserDefined -- 1
- *                : §Ò 	enTimeZoneNormail	  -- 2
+ *                : Ð± 	enTimeZoneNormail	  -- 2
  *                :                 -1
- * @input	    : envTz  /etc/TZ §Ø TZ
+ * @input	    : envTz  /etc/TZ Ð¶ TZ
  * ============================================================== 
  */
 int	get_zone_type(char *envTZ)
@@ -872,7 +872,7 @@ int	get_zone_type(char *envTZ)
 
                 //printf("*ppExistTzEnv: %s  \n", *ppExistTzEnv);
 
-                /* ¦Ä¦Â */
+                /* Î´Î² */
             	if( !strcmp(*ppExistTzEnv, "\0")){
                     //printf("is user defined zone \n");
                 	iZoneType = enTimeZoneUserDefined;
@@ -893,7 +893,7 @@ int	get_zone_type(char *envTZ)
 }
 
 /* =========================    ==========================
- * @input	    : pEnvTz  /etc/TZ §Ö
+ * @input	    : pEnvTz  /etc/TZ Ðµ
  * @output	    : curTime UTC, 
  *                 : sign    , 
  * @return         :  -1
@@ -946,7 +946,7 @@ int modify_half_time_zone(int *min, int *sign,
         	memcpy(ascHour, pGmtCst, len);
         	iHour = atoi(ascHour);
 
-            /*  ':' §Ù */
+            /*  ':' Ð· */
         	pSign = strchr(pGmtCst, ':');
         	if(pSign){
             	pSign += 1;
@@ -992,9 +992,9 @@ int prase_user_defined_time_zone(TimeZoneInfo_t *pDstTzInfo,
     	pSign = strchr(pSrc, '-');
     }else{
         /*  '+''-', : 
-         *  '+' ,  pSign ¦Ë,(pSign - pTmp) < 0;
-         *  '+'  pSign  '+' ¦Ë, 
-         *  pTmp ¦Ë, (pSign - pTmp) > 0;
+         *  '+' ,  pSign Î»,(pSign - pTmp) < 0;
+         *  '+'  pSign  '+' Î», 
+         *  pTmp Î», (pSign - pTmp) > 0;
          */
     	pTmp = strchr(pSrc, '-');
     	if(pTmp){
@@ -1270,7 +1270,7 @@ struct tm *sTime_GetLocalTime(struct tm *pstTm)
 	tzset();
     
     /* --------------- test ----------- */    
-    /*  /etc/TZ §Ö */
+    /*  /etc/TZ Ðµ */
 	if(get_tzenv_buf(ascTzEnv) < 0){
     	printf("get_tzenv_buf error \n");
     	return NULL; 
@@ -1592,7 +1592,7 @@ struct tm *Time_GetLocalTime(struct tm *pstTm)
     }
 
     /* 
-     * §³ 
+     * Ð¡ 
      */
 	if(iTimeZoneType == enTimeZoneUserDefined){
     	if(gIsDayLightTime  == enIsDayLightTime){
@@ -2362,7 +2362,7 @@ char get_gateway(char* pIfName,char* pGateway)
     pMask = ( struct sockaddr_in * ) &sGw.rt_genmask;
     memset ( &sGw, 0, sizeof ( struct rtentry ) );
     
-    //È·¶¨Ð­ÒéÀàÐÍ
+    //ç¡®å®šåè®®ç±»åž‹
     pDst->sin_family = AF_INET;
     pGw->sin_family = AF_INET;
     pMask->sin_family = AF_INET;    

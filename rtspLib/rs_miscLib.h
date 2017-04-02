@@ -80,10 +80,10 @@ extern "C"{
 #define PN_GXV3651_FHD	        "96700022"
 #define PN_CL3651_FHD	        "96701022"
 
-/* ¦ÄP/N */
+/* Î´P/N */
 #define PN_GXV3662	        "96700020"
 #define PN_CL3662	        "96701020"
-#define PN_GXV3670	        "96700021"    /* §Õ */
+#define PN_GXV3670	        "96700021"    /* Ð´ */
 #define PN_CL3670	        "96701021"
 
 #define PN_GXV3500	        "96500007"
