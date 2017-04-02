@@ -174,7 +174,7 @@ PROCON_NODE_T *CProcon::Read( uint fd )
             || (writePos <= readBegin && readBegin <= readEnd) )
         {
         	pRead->readEnd     = writePos;
-        	pProconNode     = (PROCON_NODE_T *)ShareCopy( procon->dataPool[readBegin] );        
+            pProconNode     = (PROCON_NODE_T *)ShareCopy( procon->dataPool[readBegin] );
         	pRead->readBegin = (readBegin + 1) % m_dataNode;
         }
     	else
