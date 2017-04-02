@@ -73,10 +73,9 @@ typedef struct RtspSvr_s
 	pthread_mutex_t		rtspListMutex;
 }RtspSvr_t;
 
+RtpUdpSender_t* VOD_GetSenderPtr(VodSvrState_e srvType, u32 channel, RtpStreamType_e avType);
 /* 解析rtsp url */
 int RTSP_ParseUrl(int *port, char *server, char *fileName, const char *url);
-
-
 
 
 int  RTSP_GetClientNum(int chn);

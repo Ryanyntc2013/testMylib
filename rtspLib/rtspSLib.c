@@ -201,6 +201,11 @@ void RTSP_SetUdpSendActive(int chn, int isActive)
 	gRtspVodSvr[VOD_SVR_TYPE_RTSP].pRtpUdpSender[chn][RTP_STREAM_VIDEO]->bActive = isActive;
 }
 
+RtpUdpSender_t* VOD_GetSenderPtr(VodSvrState_e vodSvrType, u32 chn, RtpStreamType_e avType)
+{
+    return gRtspVodSvr[vodSvrType].pRtpUdpSender[chn][avType];
+}
+
 RtspSession_t *RTSP_GetSessPtrBySessId(char *id)
 {
 	struct list_head *pos, *q;
@@ -1442,7 +1447,7 @@ int RTSP_EventHandlePlay(RtspSession_t *pSess)
                 	pTarget = (RtpTargetHost_t *)RTP_AddUdpSender(pSess->remoteIp, pSess->remoteRtpPort[avType], pUdpSender);
                 	if(pTarget == NULL)
                     {
-                        //dbg(Err, DbgNoPerror, "RTP_AddUdpSender return NULL \n");
+                        dbg(Err, DbgNoPerror, "RTP_AddUdpSender return NULL \n");
                     	RTSP_SendReply(403, 1, NULL, pSess);
                     	return GS_FAIL;
                     }

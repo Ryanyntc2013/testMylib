@@ -123,7 +123,7 @@ int RTP_GetJpegQTable(JpegQTable_t *pQtab, char *data, int len)
 }
 
 
-#if 0
+#if 1
 int RTP_WaitIFrame(int chn, int nalType, VodSvrType_e svrType)
 {
     RtpTargetHost_t	    *pVTarget = NULL;
@@ -280,7 +280,7 @@ RtpTargetHost_t *RTP_AddUdpSender(char *ip, int port, RtpUdpSender_t *pSender)
 {
     RtpTargetHost_t *pTarget = NULL;
 
-    if(pSender == NULL){
+    if(pSender == NULL) {
         return NULL;
     }
 
@@ -356,7 +356,7 @@ int RTP_UdpSend(RtpUdpSender_t  *pSender)
             if ((pHost != NULL) && (pHost->isActive == True) && (pSender->sendLen > 0)
                     && ((pHost->hostState == RTP_TARGETHOST_STATE_SENDING)||(RTP_PT_H264 != pSender->pt)))
             {
-                //printf("udp send ......\n");
+                printf("udp send ......\n");
                 ret = sendto(pSender->rtpSockFd , pSender->sendBuf ,
                              pSender->sendLen, 0, (struct sockaddr*)&pHost->remoteAddr,
                              sizeof(struct sockaddr));
@@ -377,7 +377,7 @@ int RTP_UdpSend(RtpUdpSender_t  *pSender)
 
 }
 
-#if 0
+#if 1
 void RTP_UdpSendVideoPacket(int chn, u32 pts, int market,
                             char *data, int len)
 {
@@ -565,7 +565,7 @@ int RTP_UdpSendH264Pkt(int chn, u32 pts, int frameType, time_t wTime,int len, ch
 }
 #endif
 
-#if 0
+#if 1
 int RTP_UdpSendH264Pkt(int chn, u32 pts, int frameType, time_t wTime,
                        int len, char *data)
 {
@@ -575,7 +575,7 @@ int RTP_UdpSendH264Pkt(int chn, u32 pts, int frameType, time_t wTime,
     u8 s_token;
     int data_len, left_len, pos;
     int	spsLen = 0, ppsLen = 0, sei;
-    int	productId = CFG_GetProductId();
+//    int	productId = CFG_GetProductId();
 
     if(chn != 0 && chn != 1){
         return 0;
@@ -587,7 +587,7 @@ int RTP_UdpSendH264Pkt(int chn, u32 pts, int frameType, time_t wTime,
     if(data == NULL){
         return GS_SUCCESS;
     }
-
+#if 0
     if( productId == ID_GXV3500 || productId == ID_CL3500 ||
             productId == ID_IP5150 ){
         if(len <= 0 || len > ENC_SIZE_SD){
@@ -601,7 +601,8 @@ int RTP_UdpSendH264Pkt(int chn, u32 pts, int frameType, time_t wTime,
             return GS_SUCCESS;
         }
     }
-#if 1	//头加密
+#endif
+#if 0	//头加密
     if(gBase64Stat[chn].base64Stat == BASE64_STAT_READING){
         nal_type = H264_Get_NalType(*pvide_data);
         if(NAL_TYPE_SPS == nal_type){
@@ -683,7 +684,7 @@ void RTP_UdpSendVideo(int type, int chn, u32 pts, int frameType,
 {
     switch(type){
     case VENC_TYPE_H264:
-        //RTP_UdpSendH264Pkt(chn, pts, frameType, wTime, len, data);
+        RTP_UdpSendH264Pkt(chn, pts, frameType, wTime, len, data);
         break;
 
     case VENC_TYPE_JPEG:
@@ -704,9 +705,9 @@ void RTP_UdpSendMediaPkt(int type, int chn, u32 pts, int frameType,
                          time_t wTime, int len, char *data)
 {
     if(frameType == AUDIO_TYPE){
-        //RTP_UdpSendAudioPacket(chn, pts, 1, len, data );
+//        RTP_UdpSendAudioPacket(chn, pts, 1, len, data );
     }else{
-        //RTP_UdpSendVideo(type, chn, pts, frameType, wTime, len, data);
+        RTP_UdpSendVideo(type, chn, pts, frameType, wTime, len, data);
     }
 }
 

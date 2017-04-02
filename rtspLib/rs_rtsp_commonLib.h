@@ -118,7 +118,6 @@ extern "C"{
 #define RTSP_MAKE_RESP_CMD(req)            (req+100)
 
 /* vodSvrTypechn  avType  */
-#define VOD_GetSenderPtr(vodSvrType, chn, avType) (gRtspVodSvr[vodSvrType].pRtpUdpSender[chn][avType])
 
 #define H264_Get_NalType(c)              ( (c) & 0x1F )  
 
@@ -310,7 +309,6 @@ typedef struct RtspSession_s
 	char         	nonce[20];//[17];
 	RtpTcpSender_t	    *pRtpTcpSender;
 }RtspSession_t;
-
 
 
 #ifdef __cplusplus
