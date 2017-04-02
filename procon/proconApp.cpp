@@ -6,7 +6,7 @@
 **  description  : procon 应用
 ********************************************************************************/
 
-#include "public.h"
+//#include "public.h"
 #include "proconApp.h"
 #include "proconH264.h"
 #include "proconJpg.h"
