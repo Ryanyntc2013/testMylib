@@ -22,7 +22,7 @@
 
 #include "hifb.h"
 #include "loadbmp.h"
-#include "sample_comm.h.h"
+#include "sample_comm.h"
 #if defined MCU_HI3515
 #include "hi_comm_vpp.h"
 #endif

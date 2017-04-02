@@ -36,7 +36,7 @@ extern "C" {
 #include <unistd.h>
 #include <signal.h>
 
-#include "sample_comm.h.h"
+#include "sample_comm.h"
 #include "hi_comm_video.h"
 #include "hi_comm_sys.h"
 #include "hi_comm_vo.h"

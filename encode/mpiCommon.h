@@ -18,7 +18,7 @@
 #ifndef __SAMPLE_COMMON_H__
 #define __SAMPLE_COMMON_H__
 
-#include "sample_comm.h.h"
+#include "sample_comm.h"
 #include "hi_comm_sys.h"
 #include "hi_comm_vb.h"
 #include "hi_comm_vi.h"

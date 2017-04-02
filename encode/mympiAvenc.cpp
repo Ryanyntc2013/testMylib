@@ -14,7 +14,7 @@
 #if defined MCU_HI3515
 #include "mpi_avenc.h"
 #endif
-#include "sample_comm.h.h"
+#include "sample_comm.h"
 
 #include "mympiAvenc.h"
 #include "const.h"

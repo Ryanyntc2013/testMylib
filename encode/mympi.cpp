@@ -9,7 +9,7 @@
 */
 
 #include "mpi_venc.h"
-#include "sample_comm.h.h"
+#include "sample_comm.h"
 #include "hicomm.h"
 #include "const.h"
 #include "debug.h"

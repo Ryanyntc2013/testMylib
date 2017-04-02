@@ -22,7 +22,7 @@
 #if defined MCU_HI3515A
 #include "hi_comm_vda.h"
 #endif
-#include "sample_comm.h.h"
+#include "sample_comm.h"
 #include "encComm.h"
 #if defined MCU_HI3515A
 #include "mpi_vda.h"
