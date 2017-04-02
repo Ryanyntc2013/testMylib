@@ -25,9 +25,6 @@ else
 	LINKFLAGS_V	=	-lstdc++ -lpthread -lm -s
 endif
 
-#extern libs
-ELIBS_PATH			:=	$(PWD)/libs
-#ELIBS				:=	$(wildcard $(ELIBS_PATH)/*.a)
 
 #final target
 export TARGET = rtspSrv
@@ -68,19 +65,29 @@ RTSP				:=	$(RTSP_PATH)/$(notdir $(RTSP_PATH)).a
 $(RTSP): $(RTSP_SRCS) $(RTSP_SRCSC) $(RTSP_INCS)
 	$(MAKE) -C $(RTSP_PATH) SUB_PATH=$(RTSP_PATH)
 
+#encode
+export ENCODE_PATH	:=	$(PWD)/encode
+ENCODE_SRCS			:=	$(wildcard $(ENCODE_PATH)/*.cpp)
+ENCODE_SRCSC		:=	$(wildcard $(ENCODE_PATH)/*.c)
+ENCODE_INCS			:=	$(wildcard $(ENCODE_PATH)/*.h)
+ENCODE				:=	$(ENCODE_PATH)/$(notdir $(ENCODE_PATH)).a
+$(ENCODE): $(ENCODE_SRCS) $(ENCODE_SRCSC) $(ENCODE_INCS)
+	$(MAKE) -C $(ENCODE_PATH) SUB_PATH=$(ENCODE_PATH)
+
 ##filling
 #for make cleanall and dep
-PATH_MOUDELS	+=    $(COMMON_PATH) $(PROCON_PATH) $(RTSP_PATH)
+PATH_MOUDELS	+=    $(COMMON_PATH) $(PROCON_PATH) $(RTSP_PATH) $(ENCODE_PATH)
 
 #for src dep this makefile
 DEP_MOUDELS		+=	$(MAIN_SRCS) $(MAIN_OBJSC) $(COMMON_SRCS) $(PUBLIC_SRCS) $(TEST_SRCS) $(PROCON_SRCS) \
-                                $(RTSP_SRCS) $(RTSP_SRCSC)
+                                $(RTSP_SRCS) $(RTSP_SRCSC) $(ENCODE_SRCS) $(ENCODE_SRCSC)
 
 #for this makefile include
-INC_PATH		:=     -I$(PUBLIC_PATH) -I$(COMMON_PATH) -I$(PROCON_PATH)  -I$(RTSP_PATH)
+INC_PATH		:=     -I$(PUBLIC_PATH) -I$(COMMON_PATH) -I$(PROCON_PATH)  -I$(RTSP_PATH) -I$(ENCODE_PATH)
 
-FIRS_LIBS =  $(RTSP) $(PROCON) $(COMMON) $(ELIBS)
+FIRS_LIBS =  $(RTSP) $(PROCON) $(COMMON) $(ELIBS) $(ENCODE)
 ## this dir
+
 CFLAGS		+= $(INC_PATH) -DUSE_RTSP_LIVE
 CPPFLAGS	+= $(CFLAGS) $(INC_PATH) -DUSE_RTSP_LIVE
 LINKFLAGS	+= $(LINKFLAGS_V)
@@ -89,8 +96,8 @@ EX_LIBS     := $(MPI_LIBS) $(AUDIO_LIBA) $(SENSOR_LIBS)
 export CFLAGS
 export CPPFLAGS
 
-$(TARGET): $(MAIN_OBJSC) $(FIRS_LIBS) $(EX_LIBS)
-	$(CC) -o $(TARGET) $^ $(LINKFLAGS)
+$(TARGET): $(COMM_OBJ) $(MAIN_OBJSC) $(FIRS_LIBS) $(EX_LIBS)
+	$(CC) $(CFLAGS) -o $@ $^ $(EX_LIBS)
 #	cp $(TARGET) /yfnfs
 
 %.o: %.cpp
@@ -107,6 +114,7 @@ clean:
 		$(MAKE) -C $$loop clean SUB_PATH=$$loop; \
 	done
 	rm -fr $(MAIN_OBJSC) $(TARGET) *.dep
+	rm -f $(COMM_OBJ)
 
 dep:
 	@for loop in $(PATH_MOUDELS);\
