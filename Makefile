@@ -74,16 +74,25 @@ ENCODE				:=	$(ENCODE_PATH)/$(notdir $(ENCODE_PATH)).a
 $(ENCODE): $(ENCODE_SRCS) $(ENCODE_SRCSC) $(ENCODE_INCS)
 	$(MAKE) -C $(ENCODE_PATH) SUB_PATH=$(ENCODE_PATH)
 
+#param
+export PARAM_PATH	:=	$(PWD)/param
+PARAM_SRCS			:=	$(wildcard $(PARAM_PATH)/*.cpp)
+PARAM_SRCSC		:=	$(wildcard $(PARAM_PATH)/*.c)
+PARAM_INCS			:=	$(wildcard $(PARAM_PATH)/*.h)
+PARAM				:=	$(PARAM_PATH)/$(notdir $(PARAM_PATH)).a
+$(PARAM): $(PARAM_SRCS) $(PARAM_SRCSC) $(PARAM_INCS)
+	$(MAKE) -C $(PARAM_PATH) SUB_PATH=$(PARAM_PATH)
+
 ##filling
 #for make cleanall and dep
-PATH_MOUDELS	+=    $(COMMON_PATH) $(PROCON_PATH) $(RTSP_PATH) $(ENCODE_PATH)
+PATH_MOUDELS	+=    $(COMMON_PATH) $(PROCON_PATH) $(RTSP_PATH) $(ENCODE_PATH)  $(PARAM_PATH)
 
 #for src dep this makefile
 DEP_MOUDELS		+=	$(MAIN_SRCS) $(MAIN_OBJSC) $(COMMON_SRCS) $(PUBLIC_SRCS) $(TEST_SRCS) $(PROCON_SRCS) \
-                                $(RTSP_SRCS) $(RTSP_SRCSC) $(ENCODE_SRCS) $(ENCODE_SRCSC)
+                                $(RTSP_SRCS) $(RTSP_SRCSC) $(ENCODE_SRCS) $(ENCODE_SRCSC)  $(PARAM_SRCS) $(PARAM_SRCSC)
 
 #for this makefile include
-INC_PATH		:=     -I$(PUBLIC_PATH) -I$(COMMON_PATH) -I$(PROCON_PATH)  -I$(RTSP_PATH) -I$(ENCODE_PATH)
+INC_PATH		:=     -I$(PUBLIC_PATH) -I$(COMMON_PATH) -I$(PROCON_PATH)  -I$(RTSP_PATH) -I$(ENCODE_PATH) -I$(PARAM_PATH)
 
 FIRS_LIBS =  $(RTSP) $(PROCON) $(COMMON) $(ELIBS) $(ENCODE)
 ## this dir

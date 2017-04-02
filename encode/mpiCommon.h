@@ -52,7 +52,7 @@
 #include "mpi_ao.h"
 #include "mpi_aenc.h"
 #include "mpi_adec.h"
-#include "tw2865.h"
+//#include "tw2865.h"
 #include "const.h"
 
 #ifdef __cplusplus

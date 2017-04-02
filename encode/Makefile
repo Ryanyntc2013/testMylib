@@ -6,11 +6,11 @@
 
 #local dir
 INC_PATH	=  -I$(COMMON_PATH) -I$(PUBLIC_PATH) -I$(PROCON_PATH) 
-CPPFLAGS	:=	$(CPPFLAGS_V) $(INC_PATH)
-SRCS		:=	$(wildcard *.cpp)
-OBJS		:=	$(SRCS:%.cpp=%.o)
-SRCSC		:=	$(wildcard *.c)
-OBJSC		:=	$(SRCSC:%.c=%.o)
+CPPFLAGS	:= $(CFLAGS) $(CPPFLAGS_V) $(INC_PATH)
+SRCS		:= $(wildcard *.cpp)
+OBJS		:= $(SRCS:%.cpp=%.o)
+SRCSC		:= $(wildcard *.c)
+OBJSC		:= $(SRCSC:%.c=%.o)
 
 LOCAL_TARGET := $(notdir $(SUB_PATH)).a
 $(LOCAL_TARGET): $(OBJS) $(OBJSC)
