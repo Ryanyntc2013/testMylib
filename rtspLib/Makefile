@@ -19,7 +19,7 @@ $(LOCAL_TARGET): $(OBJS) $(OBJSC)
 %.o: %.cpp
 	$(CPP) -c $(CPPFLAGS) -o $@ $< 
 %.o: %.c
-	$(CC) -c $(CPPFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -o $@ $<
 	
 .PHONY: clean dep
 

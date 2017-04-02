@@ -6,7 +6,7 @@
 
 #this dir
 INC_PATH	:=
-CPPFLAGS	:=	$(CPPFLAGS_V) $(INC_PATH)
+CPPFLAGS	+=	$(CPPFLAGS_V) $(INC_PATH)
 SRCS		:=	$(wildcard *.cpp)
 OBJS		:=	$(SRCS:%.cpp=%.o)
 

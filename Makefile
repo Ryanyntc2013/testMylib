@@ -8,7 +8,7 @@
 
 # Hisilicon Hi3516 sample Makefile
 
-# include ../Makefile.param
+include ../Makefile.param
 
 
 export CC		:=	$(CROSS)gcc
@@ -70,7 +70,7 @@ $(RTSP): $(RTSP_SRCS) $(RTSP_SRCSC) $(RTSP_INCS)
 
 ##filling
 #for make cleanall and dep
-PATH_MOUDELS	+=   $(PUBLIC_PATH) $(COMMON_PATH) $(PROCON_PATH) $(RTSP_PATH)
+PATH_MOUDELS	+=    $(COMMON_PATH) $(PROCON_PATH) $(RTSP_PATH)
 
 #for src dep this makefile
 DEP_MOUDELS		+=	$(MAIN_SRCS) $(MAIN_OBJSC) $(COMMON_SRCS) $(PUBLIC_SRCS) $(TEST_SRCS) $(PROCON_SRCS) \
@@ -80,11 +80,14 @@ DEP_MOUDELS		+=	$(MAIN_SRCS) $(MAIN_OBJSC) $(COMMON_SRCS) $(PUBLIC_SRCS) $(TEST_
 INC_PATH		:=     -I$(PUBLIC_PATH) -I$(COMMON_PATH) -I$(PROCON_PATH)  -I$(RTSP_PATH)
 
 FIRS_LIBS =  $(RTSP) $(PROCON) $(COMMON) $(ELIBS)
-
 ## this dir
-CPPFLAGS		:=	$(CPPFLAGS_V)
-CPPFLAGS		+=	$(INC_PATH)
-LINKFLAGS		:=	$(LINKFLAGS_V)
+CFLAGS		+= $(INC_PATH) -DUSE_RTSP_LIVE
+CPPFLAGS	+= $(CFLAGS) $(INC_PATH) -DUSE_RTSP_LIVE
+LINKFLAGS	+= $(LINKFLAGS_V)
+EX_LIBS     := $(MPI_LIBS) $(AUDIO_LIBA) $(SENSOR_LIBS)
+
+export CFLAGS
+export CPPFLAGS
 
 $(TARGET): $(MAIN_OBJSC) $(FIRS_LIBS) $(EX_LIBS)
 	$(CC) -o $(TARGET) $^ $(LINKFLAGS)
@@ -93,18 +96,17 @@ $(TARGET): $(MAIN_OBJSC) $(FIRS_LIBS) $(EX_LIBS)
 %.o: %.cpp
 	$(CPP) -c $(CPPFLAGS) -o $@ $<
 %.o: %.c
-	$(CPP) -c $(CPPFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 .PHONY: clean cleanall dep
 
-clean:
-	rm -fr $(MAIN_OBJSC) $(TARGET) *.dep
 
-cleanall: clean
+clean:
 	@for loop in $(PATH_MOUDELS);\
 	do \
 		$(MAKE) -C $$loop clean SUB_PATH=$$loop; \
 	done
+	rm -fr $(MAIN_OBJSC) $(TARGET) *.dep
 
 dep:
 	@for loop in $(PATH_MOUDELS);\
