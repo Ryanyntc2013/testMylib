@@ -18,10 +18,10 @@
 #include "hi_comm_vpp.h"
 #endif
 
-#if defined MCU_HI3515A
+//#if defined MCU_HI3515A
 #include "hi_comm_vpss.h"
 #include "hi_comm_region.h"
-#endif
+//#endif
 #include "osdComm.h"
 
 

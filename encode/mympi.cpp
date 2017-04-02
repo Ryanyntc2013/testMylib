@@ -23,7 +23,7 @@ static CMutexLock g_mympiMutex;
 */
 int MympiForceIframe( int channel )
 {
-	return HI_MPI_VENC_RequestIDR( channel << 1 );
+//	return HI_MPI_VENC_RequestIDR( channel << 1 );
 }
 
 /*

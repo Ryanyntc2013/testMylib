@@ -14,9 +14,9 @@
 #include "mpiApp.h"
 #include "message.h"
 #include "timer.h"
-#include "hton.h"
-#include "showFps.h"
-#include "sysRunTime.h"
+//#include "hton.h"
+//#include "showFps.h"
+//#include "sysRunTime.h"
 #include "proconH264.h"
 #include "mpiVenc.h"
 #include "osdApply.h"
@@ -29,8 +29,8 @@
 #include "timeExchange.h"
 #include "mympi.h"
 
-#include "tw2866Init.h"
-#include "cx26828init.h"
+//#include "tw2866Init.h"
+//#include "cx26828init.h"
 #include "hi_comm_aio.h"
 #include "mpiViFrame.h"
 /*************************************************************************

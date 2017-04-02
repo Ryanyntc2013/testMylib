@@ -5,12 +5,12 @@
 #include "malloc.h"
 #include "md5.h"
 #include "timer.h"
-#include "flash.h"
+//#include "flash.h"
 #include "message.h"
-#include "public.h"
+//#include "public.h"
 #include "paramConfig.h"
 #include "vencParamEasy.h"
-#include "dcpInsLocal.h"
+//#include "dcpInsLocal.h"
 
 static CMutexLock g_MutexConfig;
 static SYS_CONFIG g_sysConfig;
@@ -715,67 +715,67 @@ void SysConfigInitMemberAddr()
 	g_pMemberAddr[INDEX_PARAM_CONFIG_VIDEO_SHELTER]         = (char *)g_sysConfig.videoShelter;
 }
 
-static int CheckFlashConfigMd5( PARAM_CONFIG_STORE_HEAD storeHead, char *pBuf, int bufLen )
-{
-	int ret = FI_FAIL;
-	char key[16];
-	int configLen = sizeof(storeHead) + storeHead.size;
+//static int CheckFlashConfigMd5( PARAM_CONFIG_STORE_HEAD storeHead, char *pBuf, int bufLen )
+//{
+//	int ret = FI_FAIL;
+//	char key[16];
+//	int configLen = sizeof(storeHead) + storeHead.size;
 
-	if(configLen + MD5_KEY_SIZE <= bufLen)
-    {
-    	ret = Md5GenerateKey( (unsigned char *)pBuf, (unsigned int)configLen, (unsigned char *)key );
-    	if(FI_SUCCESS == ret)
-        {
-        	if(0 != memcmp( pBuf + configLen, key, MD5_KEY_SIZE))
-            {        
-            	ERRORPRINT("check MD5 failed!\r\n");
-            	PrintHex("flash MD5 :", (unsigned char*)(pBuf + configLen), MD5_KEY_SIZE, "\r\n" );         
-            	PrintHex("gen MD5	:", (unsigned char*)key, MD5_KEY_SIZE, "\r\n" );
-            	ret = FI_FAIL;
-            }
-        }
-    }
+//	if(configLen + MD5_KEY_SIZE <= bufLen)
+//    {
+//    	ret = Md5GenerateKey( (unsigned char *)pBuf, (unsigned int)configLen, (unsigned char *)key );
+//    	if(FI_SUCCESS == ret)
+//        {
+//        	if(0 != memcmp( pBuf + configLen, key, MD5_KEY_SIZE))
+//            {
+//            	ERRORPRINT("check MD5 failed!\r\n");
+//            	PrintHex("flash MD5 :", (unsigned char*)(pBuf + configLen), MD5_KEY_SIZE, "\r\n" );
+//            	PrintHex("gen MD5	:", (unsigned char*)key, MD5_KEY_SIZE, "\r\n" );
+//            	ret = FI_FAIL;
+//            }
+//        }
+//    }
 
-	return ret;
-}
+//	return ret;
+//}
 
-static int GetSysConfigStruct( char *pBuf, int bufLen )
-{
-	uint	i;
-	int ret = FI_FAIL;
-	int offset, copySize;
-	PARAM_CONFIG_STORE_HEAD storeHead = {0};
-	memcpy( &storeHead, pBuf, sizeof(storeHead) );
+//static int GetSysConfigStruct( char *pBuf, int bufLen )
+//{
+//	uint	i;
+//	int ret = FI_FAIL;
+//	int offset, copySize;
+//	PARAM_CONFIG_STORE_HEAD storeHead = {0};
+//	memcpy( &storeHead, pBuf, sizeof(storeHead) );
 
-	SVPrint( "#########storeHead.mark(%s)!\r\n", storeHead.mark );
+//	SVPrint( "#########storeHead.mark(%s)!\r\n", storeHead.mark );
 
-	if( 0 != memcmp(PARAM_CONFIG_MARK, storeHead.mark, strlen(PARAM_CONFIG_MARK)) ) // 没有这个可能导致CheckFlashConfigMd5()段错误
-    {
-    	ERRORPRINT( "Param Mark wrong, use default param!\r\n" );
-        ERRORPRINT("!!!!config file str is:%s\n",storeHead.mark);
-    	return FI_FAILED;
-    }
+//	if( 0 != memcmp(PARAM_CONFIG_MARK, storeHead.mark, strlen(PARAM_CONFIG_MARK)) ) // 没有这个可能导致CheckFlashConfigMd5()段错误
+//    {
+//    	ERRORPRINT( "Param Mark wrong, use default param!\r\n" );
+//        ERRORPRINT("!!!!config file str is:%s\n",storeHead.mark);
+//    	return FI_FAILED;
+//    }
     
-	ret = CheckFlashConfigMd5( storeHead, pBuf, bufLen );
-	SVPrint( "CheckFlashConfigMd5 ret(%d), totalMembers(%d)!\r\n", ret, storeHead.totalMembers );
-	if( FI_SUCCESS == ret && storeHead.totalMembers <= PARAM_CONFIG_MAX_MEMBERS)
-    {        
-    	offset = sizeof(storeHead);
-    	for(i = 0; i < storeHead.totalMembers; i++)
-        {
-        	if( offset + storeHead.memberSize[i] < bufLen )
-            {
-            	copySize = g_storeHead.memberSize[i] < storeHead.memberSize[i]? g_storeHead.memberSize[i] : storeHead.memberSize[i];
+//	ret = CheckFlashConfigMd5( storeHead, pBuf, bufLen );
+//	SVPrint( "CheckFlashConfigMd5 ret(%d), totalMembers(%d)!\r\n", ret, storeHead.totalMembers );
+//	if( FI_SUCCESS == ret && storeHead.totalMembers <= PARAM_CONFIG_MAX_MEMBERS)
+//    {
+//    	offset = sizeof(storeHead);
+//    	for(i = 0; i < storeHead.totalMembers; i++)
+//        {
+//        	if( offset + storeHead.memberSize[i] < bufLen )
+//            {
+//            	copySize = g_storeHead.memberSize[i] < storeHead.memberSize[i]? g_storeHead.memberSize[i] : storeHead.memberSize[i];
                 
-            	memcpy(g_pMemberAddr[i], pBuf + offset, copySize);
-            	offset += storeHead.memberSize[i];
-            }
-        }
-    	ret = FI_SUCCESS;
-    }
+//            	memcpy(g_pMemberAddr[i], pBuf + offset, copySize);
+//            	offset += storeHead.memberSize[i];
+//            }
+//        }
+//    	ret = FI_SUCCESS;
+//    }
 
-	return ret;
-}
+//	return ret;
+//}
 
 // 初始化系统配置
 void InitParamConfig()
@@ -786,38 +786,38 @@ void InitParamConfig()
 	SysConfigInitMemberAddr();
 	SysConfigRestoreFactoryConf();
     
-#if 1
-	pBuf = (char *)Malloc( MAX_PARAM_CONFIG_SIZE );
-	if(NULL != pBuf)
-    {
-    	ret = ReadConfig( pBuf, MAX_PARAM_CONFIG_SIZE );
-    	if(FI_SUCCESS == ret)
-        {            
-        	ret = GetSysConfigStruct( pBuf, MAX_PARAM_CONFIG_SIZE );
-        	if(FI_SUCCESS != ret)
-            {
-            	ERRORPRINT("Get sys config from config partition failed, to read backup!\r\n");
-            }
-        }
-    	if( FI_SUCCESS != ret)
-        {
-        	ret = ReadConfigBackup( pBuf, MAX_PARAM_CONFIG_SIZE);
-        	if(FI_SUCCESS == ret)
-            {
-            	ret = GetSysConfigStruct( pBuf, MAX_PARAM_CONFIG_SIZE );
-            	if(FI_SUCCESS != ret)
-                {
-                	ERRORPRINT("Get sys config from config backup partition failed, use default!\r\n");
-                }
-            }
-        }
+//#if 1
+//	pBuf = (char *)Malloc( MAX_PARAM_CONFIG_SIZE );
+//	if(NULL != pBuf)
+//    {
+//    	ret = ReadConfig( pBuf, MAX_PARAM_CONFIG_SIZE );
+//    	if(FI_SUCCESS == ret)
+//        {
+//        	ret = GetSysConfigStruct( pBuf, MAX_PARAM_CONFIG_SIZE );
+//        	if(FI_SUCCESS != ret)
+//            {
+//            	ERRORPRINT("Get sys config from config partition failed, to read backup!\r\n");
+//            }
+//        }
+//    	if( FI_SUCCESS != ret)
+//        {
+//        	ret = ReadConfigBackup( pBuf, MAX_PARAM_CONFIG_SIZE);
+//        	if(FI_SUCCESS == ret)
+//            {
+//            	ret = GetSysConfigStruct( pBuf, MAX_PARAM_CONFIG_SIZE );
+//            	if(FI_SUCCESS != ret)
+//                {
+//                	ERRORPRINT("Get sys config from config backup partition failed, use default!\r\n");
+//                }
+//            }
+//        }
 
-    	if( 0 != ret )
-        {
-        	SyncParamConfig();
-        }
-    }
-#endif
+//    	if( 0 != ret )
+//        {
+//        	SyncParamConfig();
+//        }
+//    }
+//#endif
 	Free(pBuf);    
 }
 
@@ -829,28 +829,28 @@ int SaveParamConfig()
 }
 
 //马上把配置写进flash
-int SyncParamConfig()
-{
-	int ret = -1;
-	int configLen = sizeof(g_storeHead) + sizeof(g_sysConfig);
-	int bufLen =  configLen + MD5_KEY_SIZE;
-	char *pBuf = (char *)Malloc( bufLen );
-	if ( NULL == pBuf ) return ret;    
+//int SyncParamConfig()
+//{
+//	int ret = -1;
+//	int configLen = sizeof(g_storeHead) + sizeof(g_sysConfig);
+//	int bufLen =  configLen + MD5_KEY_SIZE;
+//	char *pBuf = (char *)Malloc( bufLen );
+//	if ( NULL == pBuf ) return ret;
 
-	g_MutexConfig.Lock();
+//	g_MutexConfig.Lock();
 
-	memcpy( pBuf, &g_storeHead, sizeof(g_storeHead) );
-	memcpy( pBuf + sizeof(g_storeHead), &g_sysConfig, sizeof(g_sysConfig) );
-	ret = Md5GenerateKey( (unsigned char *)pBuf, (unsigned int)configLen, 
-                            (unsigned char *)pBuf + configLen );
-	if(FI_SUCCESS == ret) ret = WriteConfig( pBuf, bufLen );
-	if(FI_SUCCESS == ret) ret = WriteConfigBackup( pBuf, bufLen );
+//	memcpy( pBuf, &g_storeHead, sizeof(g_storeHead) );
+//	memcpy( pBuf + sizeof(g_storeHead), &g_sysConfig, sizeof(g_sysConfig) );
+//	ret = Md5GenerateKey( (unsigned char *)pBuf, (unsigned int)configLen,
+//                            (unsigned char *)pBuf + configLen );
+//	if(FI_SUCCESS == ret) ret = WriteConfig( pBuf, bufLen );
+//	if(FI_SUCCESS == ret) ret = WriteConfigBackup( pBuf, bufLen );
     
-	g_MutexConfig.Unlock();
+//	g_MutexConfig.Unlock();
     
-	Free( pBuf );
-	return ret;
-}
+//	Free( pBuf );
+//	return ret;
+//}
 
 static void *WriteSysConfig( void *args )
 {
@@ -1184,7 +1184,7 @@ void ParamChangedReport(void)
 	MSG_CMD_T msgCmd;
 
     //发送到客户端
-	msgCmd.cmd = DIL_PARAM_CHANGED_REPORT;
-	MessageSend( MSG_ID_DCP_SIGNAL, (char *)&msgCmd, sizeof(msgCmd) );
+//	msgCmd.cmd = DIL_PARAM_CHANGED_REPORT;
+//	MessageSend( MSG_ID_DCP_SIGNAL, (char *)&msgCmd, sizeof(msgCmd) );
 }
 
