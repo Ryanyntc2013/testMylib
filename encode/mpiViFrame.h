@@ -7,9 +7,9 @@
 
 typedef struct _ShelterDetect_
 {
-	uchar shelterStat;  // 0:ÎŞÕÚµ²    1:±»ÕÚµ²
-	uchar shelterCnt;  //¼ì²âµ½Èô¸ÉÖ¡ÓĞĞ§£¬ÔòÈÏÎª±»ÕÚµ²
-	uchar noShelterCnt;  //¼ì²âµ½Èô¸ÉÖ¡ÎŞĞ§£¬ÔòÈÏÎªÈ¡ÏûÕÚµ²
+	uchar shelterStat;  // 0:æ— é®æŒ¡    1:è¢«é®æŒ¡
+	uchar shelterCnt;  //æ£€æµ‹åˆ°è‹¥å¹²å¸§æœ‰æ•ˆï¼Œåˆ™è®¤ä¸ºè¢«é®æŒ¡
+	uchar noShelterCnt;  //æ£€æµ‹åˆ°è‹¥å¹²å¸§æ— æ•ˆï¼Œåˆ™è®¤ä¸ºå–æ¶ˆé®æŒ¡
 	uchar reserved[1];
 }SHELTER_DETECT_T;
 
@@ -23,9 +23,9 @@ typedef struct _ViFrameSt_
 
 typedef struct _ShelterSensitivity_
 {
-	uint rowDotNum;      // Ã¿ĞĞ²ÉÑù¸öÊı
-	int  frameNum;         //³¬¹ı´ËÖ¡ÊıÁ¿²ÅÈÏÎª±»ÕÚµ²
-	int  variance;      //·½²î
+	uint rowDotNum;      // æ¯è¡Œé‡‡æ ·ä¸ªæ•°
+	int  frameNum;         //è¶…è¿‡æ­¤å¸§æ•°é‡æ‰è®¤ä¸ºè¢«é®æŒ¡
+	int  variance;      //æ–¹å·®
 } SHELTER_SENSITIVITY_T;
 
 void StartViFrameThread();//do not use in HI3515A

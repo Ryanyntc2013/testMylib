@@ -36,7 +36,7 @@ extern "C" {
 #include <unistd.h>
 #include <signal.h>
 
-#include "hi_common.h"
+#include "sample_comm.h.h"
 #include "hi_comm_video.h"
 #include "hi_comm_sys.h"
 #include "hi_comm_vo.h"
@@ -711,14 +711,14 @@ HI_S32 SAMPLE_VENC_16CifH264(HI_VOID)
 
 #define MAINSTREAM PIC_D1
 #define SLAVESTREAM PIC_CIF
-// ¿ªÆô4Â·D1+ÒôÆµ±àÂë
+// å¼€å¯4è·¯D1+éŸ³é¢‘ç¼–ç 
 HI_S32 mpi_venc_4D14CifH264(HI_VOID)
 {
     HI_S32 s32Ret = 0;
     GET_STREAM_S stGetStream = {0};
     VB_CONF_S stVbConf = {0};
     HI_S32 s32ChnTotal = REAL_CHANNEL_NUM; 
-    HI_BOOL bHaveMinor = HI_FALSE; // ÊÇ·ñÖ§³Ö´ÓÂëÁ÷
+    HI_BOOL bHaveMinor = HI_FALSE; // æ˜¯å¦æ”¯æŒä»ç æµ
     PIC_SIZE_E aenSize[REAL_CHANNEL_NUM][2];
     PAYLOAD_TYPE_E aenType[2] = {PT_H264, PT_H264};
 	PARAM_CONFIG_VIDEO_ENCODE vep;

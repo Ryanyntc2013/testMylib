@@ -1,10 +1,10 @@
 #ifndef __MD_H__
 #define __MD_H__
 
-#define MAX_MACROCELL_NUM		1620     // = (720*576)/(16*16) = D1µÄÏñËØµã/Ò»¸öºê¿éµÄÏñËØµã
+#define MAX_MACROCELL_NUM		1620     // = (720*576)/(16*16) = D1çš„åƒç´ ç‚¹/ä¸€ä¸ªå®å—çš„åƒç´ ç‚¹
 #define MOVE_FRAME_INTERVAL		5
 
-/* ÊÓÆµÒÆ¶¯ÉèÖÃ */
+/* è§†é¢‘ç§»åŠ¨è®¾ç½® */
 typedef struct _MdArea_
 {
 	ushort	area[12];
@@ -12,12 +12,12 @@ typedef struct _MdArea_
 
 typedef struct _Md_Attr_
 {
-	unsigned int    macroThreshold;     /* ºê¿éãĞÖµ */
-	unsigned int 	macroRatio;         /* ÇøÓòÖĞ±¨¾¯ºê¿é±ÈÀı */
-	unsigned char	frameCount;         // ÀÛ¼ÆÓĞ¶àÉÙÖ¡¼ì²âµ½ÒÆ¶¯Õì²â
-	unsigned char	wBlock;             // ¿í¶È×Ü¹²ÓĞ¶àÉÙ¸öÄ£¿é(16 ¸öÏñËØÒ»¸öÄ£¿é)
-	unsigned char	hBlock;             // ¸ß¶È×Ü¹²ÓĞ¶àÉÙ¸öÄ£¿é
-	unsigned char	mask[MAX_MACROCELL_NUM];   /* µ¥¸öÒÆ¶¯Õì²âÇøÓò¶ÔÓ¦µÄºê¿éºÅ */
+	unsigned int    macroThreshold;     /* å®å—é˜ˆå€¼ */
+	unsigned int 	macroRatio;         /* åŒºåŸŸä¸­æŠ¥è­¦å®å—æ¯”ä¾‹ */
+	unsigned char	frameCount;         // ç´¯è®¡æœ‰å¤šå°‘å¸§æ£€æµ‹åˆ°ç§»åŠ¨ä¾¦æµ‹
+	unsigned char	wBlock;             // å®½åº¦æ€»å…±æœ‰å¤šå°‘ä¸ªæ¨¡å—(16 ä¸ªåƒç´ ä¸€ä¸ªæ¨¡å—)
+	unsigned char	hBlock;             // é«˜åº¦æ€»å…±æœ‰å¤šå°‘ä¸ªæ¨¡å—
+	unsigned char	mask[MAX_MACROCELL_NUM];   /* å•ä¸ªç§»åŠ¨ä¾¦æµ‹åŒºåŸŸå¯¹åº”çš„å®å—å· */
 	unsigned int	sadSum[MAX_MACROCELL_NUM];
 } MD_ATTR_T;
 

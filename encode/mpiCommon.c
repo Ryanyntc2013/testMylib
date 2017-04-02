@@ -633,7 +633,7 @@ HI_S32 SAMPLE_StartViByChn(HI_S32 s32ChnTotal, VI_PUB_ATTR_S* pstViDevAttr, VI_C
     for (i = 0; i < s32DevTotal; i++)
     {
 #ifdef hi3515
-        ViDev = 2 * i;/* hi3515 fpga°å Éè±¸0ºÍÉè±¸2Ê¹ÓÃ4D1Ä£Ê½ Éè±¸1ºÍÉè±¸3ÎÞÐ§ */
+        ViDev = 2 * i;/* hi3515 fpgaæ¿ è®¾å¤‡0å’Œè®¾å¤‡2ä½¿ç”¨4D1æ¨¡å¼ è®¾å¤‡1å’Œè®¾å¤‡3æ— æ•ˆ */
 #else
         ViDev = i;
 #endif
@@ -707,7 +707,7 @@ HI_S32 SAMPLE_StartViByChn_ls(HI_S32 s32ChnTotal, VI_PUB_ATTR_S* pstViDevAttr, V
     for (i = 0; i < s32DevTotal; i++)
     {
 #ifdef hi3515
-        ViDev = 2 * i;/* hi3515 fpga°å Éè±¸0ºÍÉè±¸2Ê¹ÓÃ4D1Ä£Ê½ Éè±¸1ºÍÉè±¸3ÎÞÐ§ */
+        ViDev = 2 * i;/* hi3515 fpgaæ¿ è®¾å¤‡0å’Œè®¾å¤‡2ä½¿ç”¨4D1æ¨¡å¼ è®¾å¤‡1å’Œè®¾å¤‡3æ— æ•ˆ */
 #else
         ViDev = i;
 #endif
@@ -2005,7 +2005,7 @@ HI_S32 mpi_comm_get_h264config_3515a(PIC_SIZE_E enPicSize[REAL_CHANNEL_NUM][2], 
             pstH264eAttr[channel][j].stRcAttr.stAttrH264Vbr.u32ViFrmRate = vep.frameRate;
             pstH264eAttr[channel][j].stRcAttr.stAttrH264Vbr.u32MaxBitRate = vep.bitrate;
             pstH264eAttr[channel][j].stRcAttr.stAttrH264Vbr.u32MinQp = 30;
-            pstH264eAttr[channel][j].stRcAttr.stAttrH264Vbr.u32MaxQp = 50;//Í¼Æ¬ÖÊÁ¿¿ØÖÆ¹ý´óÊ±PROCON»á³öÎÊÌâ£¬TBD
+            pstH264eAttr[channel][j].stRcAttr.stAttrH264Vbr.u32MaxQp = 50;//å›¾ç‰‡è´¨é‡æŽ§åˆ¶è¿‡å¤§æ—¶PROCONä¼šå‡ºé—®é¢˜ï¼ŒTBD
             CORRECTPRINT("VENC_RC_MODE_H264VBR,bitrate is %d\n",vep.bitrate);
         }
         
@@ -2858,10 +2858,10 @@ HI_VOID* SampleGetVencStreamProc_ls(HI_VOID *p)
 }
 #endif
 
-//»ñÈ¡ÒôÊÓÆµÁ÷
-//ÕâÀïÖ»ÊÇ»ñÈ¡HISIÐ¾Æ¬³öÀ´µÄÒôÊÓÆµ¡£
-//¶ÔÓÚÍøÂç´«Êä¹ýÀ´µÄÒôÊÓÆµ£¬¿ÉÒÔÍ¨¹ýsocketµÄselectÀ´½øÐÐÒôÊÓÆµµÄ
-//»ñÈ¡
+//èŽ·å–éŸ³è§†é¢‘æµ
+//è¿™é‡Œåªæ˜¯èŽ·å–HISIèŠ¯ç‰‡å‡ºæ¥çš„éŸ³è§†é¢‘ã€‚
+//å¯¹äºŽç½‘ç»œä¼ è¾“è¿‡æ¥çš„éŸ³è§†é¢‘ï¼Œå¯ä»¥é€šè¿‡socketçš„selectæ¥è¿›è¡ŒéŸ³è§†é¢‘çš„
+//èŽ·å–
 #define vedioENC 1
 HI_VOID* mpi_comm_get_stream_proc(HI_VOID *p)
 {

@@ -1,9 +1,9 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdApply.cpp
-**  description  : ¶¨ÒåosdÓ¦ÓÃµÄ½Ó¿Úº¯Êı
+**	æ–‡ä»¶å: osdApply.cpp
+**  description  : å®šä¹‰osdåº”ç”¨çš„æ¥å£å‡½æ•°
 **  date           :  2013.10.18
 **
 **  version       :  1.0
@@ -214,7 +214,7 @@ char int_to_rgb(int color,unsigned char *r,unsigned char *g,unsigned char *b)
 }
 
 /*
-* Ë¢ĞÂÊ±¼äOSD
+* åˆ·æ–°æ—¶é—´OSD
 */
 static int RefreshTimeOsd(struct _OsdChannel *posd)
 {
@@ -368,7 +368,7 @@ static int RefreshTimeOsd(struct _OsdChannel *posd)
 }
 
 /*
-* Ë¢ĞÂlogo OSD
+* åˆ·æ–°logo OSD
 */
 static int RefreshLogoOsd(struct _OsdChannel *posd)
 {
@@ -548,14 +548,14 @@ static int RefreshLogoOsd(struct _OsdChannel *posd)
 }
 
 /*
-* ´¦ÀíOSD´´½¨ÊÂ¼ş
+* å¤„ç†OSDåˆ›å»ºäº‹ä»¶
 */
 static int HandleOsdCreateEvent(int channel)
 {    
 	int ret = FI_FAILED;
 	struct _OsdChannel *posd = NULL;
 
-	if(0 == FiOsdCheckAscFont() )//|| 0 == FiOsdCheckChineseFont())//ÔİÊ±²»Ö§³ÖÖĞÎÄOSD£¬´ıÌí¼ÓTBD
+	if(0 == FiOsdCheckAscFont() )//|| 0 == FiOsdCheckChineseFont())//æš‚æ—¶ä¸æ”¯æŒä¸­æ–‡OSDï¼Œå¾…æ·»åŠ TBD
     {
         ERRORPRINT("font buffer is null\n");
         return -1;
@@ -627,7 +627,7 @@ static int HandleOsdRefreshEvent(int channel)
 }
 
 /*
-* OSDÏú»Ù
+* OSDé”€æ¯
 */
 static int HandleOsdDestoryEvent(int channel)
 {
@@ -668,7 +668,7 @@ static int HandleOsdDestoryEvent(int channel)
 }
 
 /*
-* Ê±¼äOSDË¢ĞÂ
+* æ—¶é—´OSDåˆ·æ–°
 */
 static int HandleTimeOsdRefreshEvent(int param1)
 {
@@ -690,7 +690,7 @@ static int HandleTimeOsdRefreshEvent(int param1)
 }
 
 /*
-* Logo OSDË¢ĞÂ
+* Logo OSDåˆ·æ–°
 */
 static int HandleLogoOsdRefreshEvent(int channel)
 {

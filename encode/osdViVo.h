@@ -1,8 +1,8 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdViVo.h
+**	æ–‡ä»¶å: osdViVo.h
 **  description  : for osdViVo.cpp
 **  date           :  2013.10.18
 **
@@ -29,7 +29,7 @@
 int FiOsdInitOsdLib();
 
 /*
-* ½â³õÊ¼»¯±à½âÂë¿â
+* è§£åˆå§‹åŒ–ç¼–è§£ç åº“
 * type:0-VI;1-VO
 */
 int FiOsdDeinitOsdLib(void);
@@ -39,37 +39,37 @@ int FiOsdInitOsd( int type, int ch, OSD_RECT rc, unsigned int color,
                 	uchar  bgTransparence, HI_U32  *handle );
 
 /*
-* Ïú»ÙÖ¸¶¨OSD
+* é”€æ¯æŒ‡å®šOSD
 * type:0-VI;1-VO
 * ch:vegroup 0~31
 */
 int FiOsdDestroyOsd(int type,int ch);
 
 /*
-* ÉèÖÃµ±Ç°µş¼Ó²ãÏÔÊ¾»¹ÊÇÒş²Ø
+* è®¾ç½®å½“å‰å åŠ å±‚æ˜¾ç¤ºè¿˜æ˜¯éšè—
 * type:0-VI;1-VO
 * ch:vegroup 0~31
-* bshow:0-Òş²Ø;1-ÏÔÊ¾
+* bshow:0-éšè—;1-æ˜¾ç¤º
 */
 int FiOsdSetShow(int type,int ch, int bshow);
 
 /*
-* Ğ´Ò»¸ö×Ö·û´®
+* å†™ä¸€ä¸ªå­—ç¬¦ä¸²
 * type:0-VI;1-VO
 * ch:vegroup 0~31
-* color:ÑÕÉ«
-* x¡¢y:Ïà¶ÔÓÚOSDµÄ×ø±ê
-* string:ÄÚÈİ
-* font_size:ÎÄ×Ö´óĞ¡,Ä¿Ç°Ö»Ö§³Ö0
-* lace:ÊÇ·ñÔ²»¬ÑÕÉ«
+* color:é¢œè‰²
+* xã€y:ç›¸å¯¹äºOSDçš„åæ ‡
+* string:å†…å®¹
+* font_size:æ–‡å­—å¤§å°,ç›®å‰åªæ”¯æŒ0
+* lace:æ˜¯å¦åœ†æ»‘é¢œè‰²
 */
 int FiOsdDrawString( int type,int ch, int color, int x, int y, 
             	const char *string, int font_size, int lace);
 
-/*¼ÓÔØÎÄ×Ö¿â*/
+/*åŠ è½½æ–‡å­—åº“*/
 int SVOsdInitFont(void);
 
-/*Ğ¶ÔØÎÄ×Ö¿â*/
+/*å¸è½½æ–‡å­—åº“*/
 int SVOsdDestroyFont(void);
 
 int FiOsdCheckAscFont();

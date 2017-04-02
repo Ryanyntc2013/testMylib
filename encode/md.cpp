@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ÀûÓÃmpi ÊµÏÖÒÆ¶¯Õì²â 
+**  description  : åˆ©ç”¨mpi å®ç°ç§»åŠ¨ä¾¦æµ‹ 
 ********************************************************************************/
 
 
@@ -22,7 +22,7 @@
 #if defined MCU_HI3515A
 #include "hi_comm_vda.h"
 #endif
-#include "hi_common.h"
+#include "sample_comm.h.h"
 #include "encComm.h"
 #if defined MCU_HI3515A
 #include "mpi_vda.h"
@@ -392,7 +392,7 @@ static int SetMDArea ( int ch, MD_AREA_T mdArea )
 	return 0;
 }
 
-// ÉèÖÃÁéÃô¶È
+// è®¾ç½®çµæ•åº¦
 static int SetMDSensitive( int channel )
 {
 	int	ret;
@@ -436,19 +436,19 @@ static int SetMDSensitive( int channel )
             	break; 
         }
     	memcpy( mdArea.area, pcamd.detectArea.area, sizeof(mdArea.area) );
-    	ret = SetMDArea( channel, mdArea );/*ÉèÖÃÒÆÕìÇøÓò*/
+    	ret = SetMDArea( channel, mdArea );/*è®¾ç½®ç§»ä¾¦åŒºåŸŸ*/
     }
     
 	return ret;
 }
 
 
-/* ÅĞ¶Ïµ¥¸öÕì²âÇøÓòÊÇ·ñ±¨¾¯ */
+/* åˆ¤æ–­å•ä¸ªä¾¦æµ‹åŒºåŸŸæ˜¯å¦æŠ¥è­¦ */
 static int ShouldAlarm( unsigned int avgSadValue[MAX_MACROCELL_NUM], int ch )
 {
 	int r,c;
-	int Area_macrocell_num           = 0;    /*Õì²âÇøÓòÖĞµÄºê¿é¸öÊı */
-	int Area_Alarm_macrocell_num     = 0;    /*Õì²âÇøÓòÖĞ±¨¾¯ºê¿é¸öÊı */
+	int Area_macrocell_num           = 0;    /*ä¾¦æµ‹åŒºåŸŸä¸­çš„å®å—ä¸ªæ•° */
+	int Area_Alarm_macrocell_num     = 0;    /*ä¾¦æµ‹åŒºåŸŸä¸­æŠ¥è­¦å®å—ä¸ªæ•° */
 
 	for( r=0; r<g_mdAttr[ch].hBlock; r++ )
     {
@@ -600,9 +600,9 @@ static void *MdThread( void *arg )
 
 	while( g_mdThreadRunFlag )
     {
-    	if( 0 == CheckMdNeed() )     // Èç¹ûÈ«²¿Í¨µÀ¶¼Ã»ÓĞ´ò¿ªÒÆ¶¯Õì²â
+    	if( 0 == CheckMdNeed() )     // å¦‚æœå…¨éƒ¨é€šé“éƒ½æ²¡æœ‰æ‰“å¼€ç§»åŠ¨ä¾¦æµ‹
         {        
-        	g_mdCondition.Wait();     // Ôò½øÈëĞİÃß
+        	g_mdCondition.Wait();     // åˆ™è¿›å…¥ä¼‘çœ 
         	MessageRecv( MSG_ID_MD_PARAM_CHANGE );
         	continue;
         }
@@ -909,10 +909,10 @@ static void *MdThread( void *arg )
 
 	while( g_mdThreadRunFlag )
     {
-    	if( 0 == CheckMdNeed() )     // Èç¹ûÈ«²¿Í¨µÀ¶¼Ã»ÓĞ´ò¿ªÒÆ¶¯Õì²â
+    	if( 0 == CheckMdNeed() )     // å¦‚æœå…¨éƒ¨é€šé“éƒ½æ²¡æœ‰æ‰“å¼€ç§»åŠ¨ä¾¦æµ‹
         {   
             SVPrint("MD close all\n");
-        	g_mdCondition.Wait();     // Ôò½øÈëĞİÃß
+        	g_mdCondition.Wait();     // åˆ™è¿›å…¥ä¼‘çœ 
         	MessageRecv( MSG_ID_MD_PARAM_CHANGE );
         	continue;
         }

@@ -1,12 +1,12 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.06.14
-**  description  : »ñµÃYUVÊÓÆµÁ÷  ²¢×öÊÓÆµÕÚµ²ÅĞ¶Ï
-	ÀíÏë×´Ì¬ÍêÈ«±»ÕÚµ² U Öµ»áÊÇ0x80  
-	×öÒ»¸ö·¶Î§µÄÅĞ¶Ï£¬Èç¹û´óÓÚ×îĞ¡²¢ÇÒĞ¡ÓÚ×î´ó£¬ÔòÈÏÎª±»ÕÚµ²ÁË
+**  description  : è·å¾—YUVè§†é¢‘æµ  å¹¶åšè§†é¢‘é®æŒ¡åˆ¤æ–­
+	ç†æƒ³çŠ¶æ€å®Œå…¨è¢«é®æŒ¡ U å€¼ä¼šæ˜¯0x80  
+	åšä¸€ä¸ªèŒƒå›´çš„åˆ¤æ–­ï¼Œå¦‚æœå¤§äºæœ€å°å¹¶ä¸”å°äºæœ€å¤§ï¼Œåˆ™è®¤ä¸ºè¢«é®æŒ¡äº†
 *******************************************************************************
 */
 
@@ -72,12 +72,12 @@ int VideoGetShelterDetect( int channel )
 }
 
 /*
-* ÁéÃô¶È¼¶±ğ¶¨Òå  
-*  0: ĞèÒªÓÃÕû¸öÊÖÕÆ½«ÉãÏñÍ·¸Ç×¡
+* çµæ•åº¦çº§åˆ«å®šä¹‰  
+*  0: éœ€è¦ç”¨æ•´ä¸ªæ‰‹æŒå°†æ‘„åƒå¤´ç›–ä½
 *  1:
 *  2:
 *  3:
-*  4: ÕÕ×ÅÌì»¨°å¼´ÈÏÎª±»ÕÚµ² (Ìì»¨°åÑÕÉ«Ïà²î²»´ó)
+*  4: ç…§ç€å¤©èŠ±æ¿å³è®¤ä¸ºè¢«é®æŒ¡ (å¤©èŠ±æ¿é¢œè‰²ç›¸å·®ä¸å¤§)
 */
 void VideoShelterSensitivityConvert( PARAM_CONFIG_ALARM_VIDEO_SHELTER param, SHELTER_SENSITIVITY_T *sensitivity )
 {
@@ -145,7 +145,7 @@ static int VideoShelterDetect( int channel, VIDEO_FRAME_INFO_S stFrame )
 	ptTmp = (unsigned char*)HI_MPI_SYS_Mmap(stFrame.stVFrame.u32PhyAddr[1], len);    
 
 
-    //²ÉÑù
+    //é‡‡æ ·
 	step = stFrame.stVFrame.u32Width/(sensitivity.rowDotNum+1);
 	index = 0;
 	for ( row=5; row<(stFrame.stVFrame.u32Height/2-5); row++)
@@ -159,7 +159,7 @@ static int VideoShelterDetect( int channel, VIDEO_FRAME_INFO_S stFrame )
     }
 	HI_MPI_SYS_Munmap( ptTmp, len );
 
-    //¼ÆËã·½²î
+    //è®¡ç®—æ–¹å·®
 	sum = 0;
 	for ( i=0; i<index; i++ )
     {
@@ -180,7 +180,7 @@ static int VideoShelterDetect( int channel, VIDEO_FRAME_INFO_S stFrame )
     
     //s_videoShelterMutex.Lock();
     //ch = channel;
-    //Ã»ÓĞ±»ÕÚµ²
+    //æ²¡æœ‰è¢«é®æŒ¡
 	if ( avg>sensitivity.variance )
     {
     	g_ShelterDetect[channel].shelterCnt = 0;
@@ -195,7 +195,7 @@ static int VideoShelterDetect( int channel, VIDEO_FRAME_INFO_S stFrame )
             }
         }
     }
-	else  //±»ÕÚµ² 
+	else  //è¢«é®æŒ¡ 
     {
     	g_ShelterDetect[channel].noShelterCnt = 0;
     	g_ShelterDetect[channel].shelterCnt ++;
@@ -484,10 +484,10 @@ static void *OdThread( void *arg )
     CORRECTPRINT( "!!!!!!!!!%s start!\r\n", __FUNCTION__ );
 	while( g_odThreadRunFlag )
     {
-    	if( 0 == CheckOdNeed() )     // Èç¹ûÈ«²¿Í¨µÀ¶¼Ã»ÓĞ´ò¿ªÒÆ¶¯Õì²â
+    	if( 0 == CheckOdNeed() )     // å¦‚æœå…¨éƒ¨é€šé“éƒ½æ²¡æœ‰æ‰“å¼€ç§»åŠ¨ä¾¦æµ‹
         {   
             SVPrint("MD close all\n");
-        	g_OdCondition.Wait();     // Ôò½øÈëĞİÃß
+        	g_OdCondition.Wait();     // åˆ™è¿›å…¥ä¼‘çœ 
         	MessageRecv( MSG_ID_SHELTER_ALARM_PARAM_CHANGE );
         	continue;
         }

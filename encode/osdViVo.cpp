@@ -1,9 +1,9 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdViVo.cpp
-**  description  : ¼æÈİVI VO µÄOSD
+**	æ–‡ä»¶å: osdViVo.cpp
+**  description  : å…¼å®¹VI VO çš„OSD
 **  date           :  2013.10.18
 **
 **  version       :  1.0
@@ -22,7 +22,7 @@
 
 #include "hifb.h"
 #include "loadbmp.h"
-#include "hi_common.h"
+#include "sample_comm.h.h"
 #if defined MCU_HI3515
 #include "hi_comm_vpp.h"
 #endif
@@ -84,13 +84,13 @@ int FiOsdDeinitOsdLib()
 }
 
 /*
-* fn: ³õÊ¼»¯Ö¸¶¨ÇøÓò
+* fn: åˆå§‹åŒ–æŒ‡å®šåŒºåŸŸ
 * type:0-VI;1-VO
-* ch:vegroup 0~31£¬Èç¹ûch==0xff£¬ÔòÎªÉèÖÃ¹«¹²Í¨µÀ
-* rc:¾ØĞÎ
-* color:ÑÕÉ«
-* handle:out,´´½¨µÄosd¾ä±ú
-* bgTransparence: ±³¾°Í¸Ã÷¶È 0~100,±êÊ¾0%~100%
+* ch:vegroup 0~31ï¼Œå¦‚æœch==0xffï¼Œåˆ™ä¸ºè®¾ç½®å…¬å…±é€šé“
+* rc:çŸ©å½¢
+* color:é¢œè‰²
+* handle:out,åˆ›å»ºçš„osdå¥æŸ„
+* bgTransparence: èƒŒæ™¯é€æ˜åº¦ 0~100,æ ‡ç¤º0%~100%
 */
 #if defined MCU_HI3515
 int FiOsdInitOsd( int type, int ch, OSD_RECT rc, unsigned int color, 

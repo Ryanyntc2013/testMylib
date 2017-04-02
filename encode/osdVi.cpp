@@ -1,9 +1,9 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdVi.cpp
-**  description  : ·â×°º£Ë¼µÄVI OSD½Ó¿Ú
+**	æ–‡ä»¶å: osdVi.cpp
+**  description  : å°è£…æµ·æ€çš„VI OSDæ¥å£
 **  date           :  2013.10.18
 **
 **  version       :  1.0
@@ -21,7 +21,7 @@
 
 #include "hifb.h"
 #include "loadbmp.h"
-#include "hi_common.h"
+#include "sample_comm.h.h"
 #if defined MCU_HI3515
 #include "hi_comm_vpp.h"
 #endif
@@ -51,7 +51,7 @@ static int ViDrawChinese(REGION_HANDLE handle,  int color, int x, int y,unsigned
 static int ViBlacLace(unsigned char* lacemem,unsigned short* video, int font_width);
 
 
-/*³õÊ¼»¯OSD¿â */
+/*åˆå§‹åŒ–OSDåº“ */
 int FiOsdViInitOsdLib(void)
 {
 	int i;
@@ -65,7 +65,7 @@ int FiOsdViInitOsdLib(void)
 	return 0;    
 }
 
-/*½â³õÊ¼»¯OSD¿â */
+/*è§£åˆå§‹åŒ–OSDåº“ */
 int FiOsdViDeinitOsdLib(void)
 {
 	return 0;
@@ -76,9 +76,9 @@ int SVOsdViDeinitOsdLib(void)
 	return 0;
 }
 /*
-* fn: ´ÓÍ¸Ã÷¶È×ª»¯³Éalpha
-* bgTransparence: Í¸Ã÷¶È, // ±³¾°Í¸Ã÷¶È 0(²»Í¸Ã÷)~100(100%Í¸Ã÷),±êÊ¾0%~100%
-* ·µ»Ø 0(È«Í¸Ã÷)~128(²»Í¸Ã÷)
+* fn: ä»é€æ˜åº¦è½¬åŒ–æˆalpha
+* bgTransparence: é€æ˜åº¦, // èƒŒæ™¯é€æ˜åº¦ 0(ä¸é€æ˜)~100(100%é€æ˜),æ ‡ç¤º0%~100%
+* è¿”å› 0(å…¨é€æ˜)~128(ä¸é€æ˜)
 */
 static uint TransparenceToAlpha( uchar transparence )
 {
@@ -96,7 +96,7 @@ static uint TransparenceToAlpha( uchar transparence )
 }
 
 #if defined MCU_HI3515
-/*³õÊ¼»¯Ö¸¶¨ÇøÓò vegroup =ff Îª¹«¹²ÇøÓò*/
+/*åˆå§‹åŒ–æŒ‡å®šåŒºåŸŸ vegroup =ff ä¸ºå…¬å…±åŒºåŸŸ*/
 int FiOsdViInitOsd( VENC_GRP VeGroup,OSD_RECT rc, unsigned int color,  
                 	uchar bgTransparence, REGION_HANDLE *handle )
 {
@@ -141,8 +141,8 @@ int FiOsdViInitOsd( VENC_GRP VeGroup,OSD_RECT rc, unsigned int color,
 	stRgnAttr.unAttr.stOverlay.stRect.u32Width = rc_tmp.width; 
 	stRgnAttr.unAttr.stOverlay.stRect.u32Height = rc_tmp.height;
 	SVPrint( "x(%d), y(%d), width(%d), height(%d)!\r\n", rc_tmp.x, rc_tmp.y, rc_tmp.width, rc_tmp.height );
-	stRgnAttr.unAttr.stOverlay.u32BgAlpha = TransparenceToAlpha( bgTransparence );//30;  // [0,128] = [È«Í¸Ã÷,²»Í¸Ã÷]
-	stRgnAttr.unAttr.stOverlay.u32FgAlpha = 128;     // [0,128] = [È«Í¸Ã÷,²»Í¸Ã÷]
+	stRgnAttr.unAttr.stOverlay.u32BgAlpha = TransparenceToAlpha( bgTransparence );//30;  // [0,128] = [å…¨é€æ˜,ä¸é€æ˜]
+	stRgnAttr.unAttr.stOverlay.u32FgAlpha = 128;     // [0,128] = [å…¨é€æ˜,ä¸é€æ˜]
 	stRgnAttr.unAttr.stOverlay.u32BgColor = color&BGALPHAMASK;
 	stRgnAttr.unAttr.stOverlay.VeGroup = VeGroup;
     
@@ -308,8 +308,8 @@ int FiOsdViInitOsdBgClrEx( VENC_GRP VeGroup,OSD_RECT rc, unsigned int color,
 	stRgnAttr.unAttr.stOverlay.stRect.s32Y= rc_tmp.y;
 	stRgnAttr.unAttr.stOverlay.stRect.u32Width = rc_tmp.width; 
 	stRgnAttr.unAttr.stOverlay.stRect.u32Height = rc_tmp.height;
-	stRgnAttr.unAttr.stOverlay.u32BgAlpha = TransparenceToAlpha( bgTransparence );        // [0,128] = [È«Í¸Ã÷,²»Í¸Ã÷]
-	stRgnAttr.unAttr.stOverlay.u32FgAlpha = 128;    // [0,128] = [È«Í¸Ã÷,²»Í¸Ã÷]
+	stRgnAttr.unAttr.stOverlay.u32BgAlpha = TransparenceToAlpha( bgTransparence );        // [0,128] = [å…¨é€æ˜,ä¸é€æ˜]
+	stRgnAttr.unAttr.stOverlay.u32FgAlpha = 128;    // [0,128] = [å…¨é€æ˜,ä¸é€æ˜]
 	stRgnAttr.unAttr.stOverlay.VeGroup = VeGroup;
     
 	ret = HI_MPI_VPP_CreateRegion(&stRgnAttr, handle);
@@ -436,7 +436,7 @@ int SVOsdViInitOsdBgClrEx( VI_CHN VeGroup,OSD_RECT rc, unsigned int color,
 }
 
 #if defined MCU_HI3515
-/*Ïú»ÙÖ¸¶¨OSD. */
+/*é”€æ¯æŒ‡å®šOSD. */
 int FiOsdViDestroyOsd(REGION_HANDLE handle)
 {
 	int ret = FI_FAILED;
@@ -490,7 +490,7 @@ int SVOsdViDestroyOsd(REGION_HANDLE handle)
 	return ret;
 }
 
-/*»ñµÃ³õÊ¼»¯VPPµÄ¾ä±ú*/
+/*è·å¾—åˆå§‹åŒ–VPPçš„å¥æŸ„*/
 static int GetBufIndex(REGION_HANDLE handle,int *index)
 {
 	int i;
@@ -506,8 +506,8 @@ static int GetBufIndex(REGION_HANDLE handle,int *index)
 	return -1;    
 }
 
-/*ÉèÖÃµ±Ç°µş¼Ó²ãÏÔÊ¾»¹ÊÇÒş²Ø.
-bshow :  1£¬ÏÔÊ¾ 0£¬Òş²Ø */
+/*è®¾ç½®å½“å‰å åŠ å±‚æ˜¾ç¤ºè¿˜æ˜¯éšè—.
+bshow :  1ï¼Œæ˜¾ç¤º 0ï¼Œéšè— */
 #if defined MCU_HI3515
 int FiOsdViSetShow(REGION_HANDLE handle, int bshow)
 {
@@ -594,7 +594,7 @@ uchar  bgTransparence,eOSDTYPE eosdtype)
 }
 #endif
 #if defined MCU_HI3515
-/*Ğ´Ò»¸ö×Ö·û´®.  */
+/*å†™ä¸€ä¸ªå­—ç¬¦ä¸².  */
 int FiOsdViDrawString(REGION_HANDLE handle, int color, int x, int y, 
             	const char *string, int font_size, int lace)
 {
@@ -817,7 +817,7 @@ static int ViDrawChinese(REGION_HANDLE handle, int color, int x,int y,unsigned c
             {
             	if (BIT_I(*zkbuf, j))
                 {
-                    *(pvideo + 7 - j) = color|FGALPHAMASK;    /*ql explain:Ê¹ÓÃmirrorÌá¹©µÄ×Ö¿â,Èç¹û²»ÊÇÕâÑù¶ÁµÄ»°,¶Áµ½µÄ¶«Î÷»áµ¹¹ıÀ´µÄ*/
+                    *(pvideo + 7 - j) = color|FGALPHAMASK;    /*ql explain:ä½¿ç”¨mirroræä¾›çš„å­—åº“,å¦‚æœä¸æ˜¯è¿™æ ·è¯»çš„è¯,è¯»åˆ°çš„ä¸œè¥¿ä¼šå€’è¿‡æ¥çš„*/
                     *lacememlp = 1;
                 }
             	else
@@ -831,7 +831,7 @@ static int ViDrawChinese(REGION_HANDLE handle, int color, int x,int y,unsigned c
             {
             	if (BIT_I(*zkbuf, j))
                 {
-                    *(pvideo + 15 - j) = color|FGALPHAMASK;/*ql explain:Ê¹ÓÃmirrorÌá¹©µÄ×Ö¿â,Èç¹û²»ÊÇÕâÑù¶ÁµÄ»°,¶Áµ½µÄ¶«Î÷»áµ¹¹ıÀ´µÄ*/
+                    *(pvideo + 15 - j) = color|FGALPHAMASK;/*ql explain:ä½¿ç”¨mirroræä¾›çš„å­—åº“,å¦‚æœä¸æ˜¯è¿™æ ·è¯»çš„è¯,è¯»åˆ°çš„ä¸œè¥¿ä¼šå€’è¿‡æ¥çš„*/
                     *lacememlp = 1;
                 }
             	else

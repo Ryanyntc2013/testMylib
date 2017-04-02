@@ -1,8 +1,8 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdApply.h
+**	æ–‡ä»¶å: osdApply.h
 **  description  : for osdApply.cpp
 **  date           :  2013.10.18
 **
@@ -40,7 +40,7 @@ typedef struct OsdLogo
 	unsigned short xPos;
 	unsigned short yPos;
 	char logo[MAX_LOGO_LEN];
-	unsigned char  bgTransparence;        // ±³¾°Í¸Ã÷¶È 0~100,±êÊ¾0%~100%
+	unsigned char  bgTransparence;        // èƒŒæ™¯é€æ˜åº¦ 0~100,æ ‡ç¤º0%~100%
 	char	reserved[7];
 }OSD_LOGO;
 
@@ -52,7 +52,7 @@ typedef struct OsdTime
 	unsigned char colorBlue;    
 	unsigned short xPos;
 	unsigned short yPos;
-	unsigned char  bgTransparence;        // ±³¾°Í¸Ã÷¶È 0~100,±êÊ¾0%~100%
+	unsigned char  bgTransparence;        // èƒŒæ™¯é€æ˜åº¦ 0~100,æ ‡ç¤º0%~100%
 	char	reserved[7];
 }OSD_TIME;
 

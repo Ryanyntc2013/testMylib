@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : µ÷ÓÃmpp µÄ½Ó¿Ú, ·â×°, ¸øÍâ½çÌá¹©½Ó¿Ú
+**  description  : è°ƒç”¨mpp çš„æ¥å£, å°è£…, ç»™å¤–ç•Œæä¾›æ¥å£
 ********************************************************************************/
 
 #include <stdio.h>
@@ -34,7 +34,7 @@
 #include "hi_comm_aio.h"
 #include "mpiViFrame.h"
 /*************************************************************************
-* fn: ·¢ËÍÏûÏ¢¸æËß¶¨Ê±Æ÷,Ö´ĞĞÖØÆôÊÓÆµ±àÂëÏß³ÌµÄ¶¯×÷
+* fn: å‘é€æ¶ˆæ¯å‘Šè¯‰å®šæ—¶å™¨,æ‰§è¡Œé‡å¯è§†é¢‘ç¼–ç çº¿ç¨‹çš„åŠ¨ä½œ
 *************************************************************************/
 void FiEncSendRestartMessage()
 {
@@ -73,7 +73,7 @@ static int GetChnProconH264Fd( int channel )
 	return g_proconH264Fd[channel];
 }
 
-//»ñÈ¡¸÷¸öÍ¨µÀµÄH264µÄÉú²úÕßÏû·ÑÕß¶ÔÏóµÄ¾ä±ú
+//è·å–å„ä¸ªé€šé“çš„H264çš„ç”Ÿäº§è€…æ¶ˆè´¹è€…å¯¹è±¡çš„å¥æŸ„
 static void InitProconH264Fd()
 {
 	int i;
@@ -98,11 +98,11 @@ static void DeinitProconH264Fd()
 }
 
 /*******************************************************************************
-* fn: °ÑH264 ´Óº£Ë¼µ×²ãµÄµØÖ·¿½±´µ½Ó¦ÓÃ²ãµØÖ·,²¢×é³ÉÒ»Ö¡
-* channel: Í¨µÀ
-* chType: 0, Ö÷ÂëÁ÷; 1, ´ÓÂëÁ÷
-* hisiH264: ´Óº£Ë¼µ×²ãÖĞ»ñÈ¡µ½µÄh264 Ö¸Õë, ÀàĞÍÎª VENC_STREAM_S
-* hisiAudio: ´Óº£Ë¼µ×²ãÖĞ»ñÈ¡µ½µÄÒôÆµ Ö¸Õë, ÀàĞÍÎª AUDIO_STREAM_S
+* fn: æŠŠH264 ä»æµ·æ€åº•å±‚çš„åœ°å€æ‹·è´åˆ°åº”ç”¨å±‚åœ°å€,å¹¶ç»„æˆä¸€å¸§
+* channel: é€šé“
+* chType: 0, ä¸»ç æµ; 1, ä»ç æµ
+* hisiH264: ä»æµ·æ€åº•å±‚ä¸­è·å–åˆ°çš„h264 æŒ‡é’ˆ, ç±»å‹ä¸º VENC_STREAM_S
+* hisiAudio: ä»æµ·æ€åº•å±‚ä¸­è·å–åˆ°çš„éŸ³é¢‘ æŒ‡é’ˆ, ç±»å‹ä¸º AUDIO_STREAM_S
 *******************************************************************************/
 #if 0
 
@@ -112,8 +112,8 @@ int H264FromHisiAddrToMyAddrAv( int channel, void *hisiH264, void *hisiAudio )
 	int	            	len, index = 0;
 	unsigned long     	frameLen = 0;
 	uint             	proconH264Fd;
-	STREAM_HEAD_T     	vFrameHead;     // ÊÓÆµÖ¡Í·
-	STREAM_HEAD_T     	aFrameHead;     // ÒôÆµÖ¡Í·
+	STREAM_HEAD_T     	vFrameHead;     // è§†é¢‘å¸§å¤´
+	STREAM_HEAD_T     	aFrameHead;     // éŸ³é¢‘å¸§å¤´
 	DATA_PIECE_T             	proDataInfo;
 	VENC_STREAM_S     *vEncStream = (VENC_STREAM_S *)hisiH264;
 	AUDIO_STREAM_S     *aEncStream = (AUDIO_STREAM_S *)hisiAudio; 
@@ -251,10 +251,10 @@ int H264FromHisiAddrToMyAddrAv( int channel, void *hisiH264, void *hisiAudio )
 }
 #endif
 /******************************************************************************
-* fn: °ÑH264 ´Óº£Ë¼µ×²ãµÄµØÖ·¿½±´µ½Ó¦ÓÃ²ãµØÖ·,²¢×é³ÉÒ»Ö¡
-* channel: Í¨µÀ
-* chType: 0, Ö÷ÂëÁ÷; 1, ´ÓÂëÁ÷
-* hisiH264: ´Óº£Ë¼µ×²ãÖĞ»ñÈ¡µ½µÄh264 Ö¸Õë, ÀàĞÍÎª VENC_STREAM_S
+* fn: æŠŠH264 ä»æµ·æ€åº•å±‚çš„åœ°å€æ‹·è´åˆ°åº”ç”¨å±‚åœ°å€,å¹¶ç»„æˆä¸€å¸§
+* channel: é€šé“
+* chType: 0, ä¸»ç æµ; 1, ä»ç æµ
+* hisiH264: ä»æµ·æ€åº•å±‚ä¸­è·å–åˆ°çš„h264 æŒ‡é’ˆ, ç±»å‹ä¸º VENC_STREAM_S
 *******************************************************************************/
 int H264FromHisiAddrToMyAddr( int channel, void *hisiH264 )
 {
@@ -262,7 +262,7 @@ int H264FromHisiAddrToMyAddr( int channel, void *hisiH264 )
 	int	            	len, index = 0;
 	unsigned long     	frameLen = 0;
 	uint             	proconH264Fd;
-	STREAM_HEAD_T     	vFrameHead; // ÊÓÆµÖ¡Í·
+	STREAM_HEAD_T     	vFrameHead; // è§†é¢‘å¸§å¤´
 	DATA_PIECE_T     	proDataInfo;
 	VENC_STREAM_S *vEncStream = (VENC_STREAM_S *)hisiH264;
 	uchar frameType;
@@ -388,7 +388,7 @@ int AudioFromHisiAddrToMyAddr( int channel, void *hisiAudio )
 	int					index = 0;
 	unsigned long 		frameLen = 0;
 	uint 				proconH264Fd;
-	STREAM_HEAD_T 		aFrameHead; 	// ÒôÆµÖ¡Í·
+	STREAM_HEAD_T 		aFrameHead; 	// éŸ³é¢‘å¸§å¤´
 	DATA_PIECE_T 		proDataInfo;
 	AUDIO_STREAM_S 	*   aEncStream = (AUDIO_STREAM_S *)hisiAudio; 
 	struct timeval tv;

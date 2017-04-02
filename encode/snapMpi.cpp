@@ -1,10 +1,10 @@
 /*
 *********************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.11.06
-**  description  : ·â×°×¥ÅÄµÄMPI
+**  description  : å°è£…æŠ“æ‹çš„MPI
 *********************************************************************
 */
 #if defined MCU_HI3515
@@ -27,10 +27,10 @@
 
 static ClMutexLock g_snapMutex[REAL_CHANNEL_NUM];
 /*
-* fn: ´´½¨×¥ÅÂÍ¨µÀ×éºÍ×¥ÅÂÍ¨µÀ
-* snapCh: ÄÄ¸ö×¥ÅÄÍ¨µÀ
-* videoStandard: ÊÓÆµ±ê×¼
-* resolution: ×¥ÅÄÍ¼ÏñµÄ·Ö±æÂÊ
+* fn: åˆ›å»ºæŠ“æ€•é€šé“ç»„å’ŒæŠ“æ€•é€šé“
+* snapCh: å“ªä¸ªæŠ“æ‹é€šé“
+* videoStandard: è§†é¢‘æ ‡å‡†
+* resolution: æŠ“æ‹å›¾åƒçš„åˆ†è¾¨ç‡
 */
 static int CreateSnapGrpAndChn( int snapCh, int videoStandard, int resolution )
 {
@@ -42,7 +42,7 @@ static int CreateSnapGrpAndChn( int snapCh, int videoStandard, int resolution )
 	VENC_ATTR_JPEG_S 	stJpegAttr;
 	VENC_CHN_ATTR_S 	stAttr;
 
-    /*JPEG±àÂëÊôĞÔ*/
+    /*JPEGç¼–ç å±æ€§*/
 	if( videoStandard == HI_PAL )
     {
     	switch( resolution )
@@ -167,7 +167,7 @@ static int CreateSnapGrpAndChn( int snapCh, int videoStandard, int resolution )
 }
 
 /*
-* fn: Ïú»Ù×¥ÅÂÍ¨µÀ×éºÍ×¥ÅÂÍ¨µÀ
+* fn: é”€æ¯æŠ“æ€•é€šé“ç»„å’ŒæŠ“æ€•é€šé“
 */
 static int DestorySnapGrpAndChn( int snapCh )
 {
@@ -202,7 +202,7 @@ static int DestorySnapGrpAndChn( int snapCh )
 }
 
 /*
-* ¿ªÊ¼×¥ÅÂ
+* å¼€å§‹æŠ“æ€•
 */
 static int StartSnapPic( int snapCh )
 {
@@ -226,7 +226,7 @@ static int StartSnapPic( int snapCh )
 }
 
 /*
-* Í£Ö¹×¥ÅÂ
+* åœæ­¢æŠ“æ€•
 */
 int StopSnapPic( int snapCh )
 {
@@ -250,7 +250,7 @@ int StopSnapPic( int snapCh )
 }
 
 /*
- * °Ñ×¥ÅÂµ½µÄÊı¾İ´æµ½bufÀïÃæ
+ * æŠŠæŠ“æ€•åˆ°çš„æ•°æ®å­˜åˆ°bufé‡Œé¢
  */
 static int SaveSnapPicDataToBuf( int snapCh, void *buf, unsigned int *len )
 {
@@ -353,7 +353,7 @@ static int SaveSnapPicDataToBuf( int snapCh, void *buf, unsigned int *len )
 }
 
 /*
-* fn: »ñÈ¡Ò»ÕÅ×¥ÅÂÍ¼Æ¬²¢°ÑÊı¾İ´æµ½bufÀïÃæ
+* fn: è·å–ä¸€å¼ æŠ“æ€•å›¾ç‰‡å¹¶æŠŠæ•°æ®å­˜åˆ°bufé‡Œé¢
 */
 static int GetOneSnapPic( int snapCh, void *buf, unsigned int *len )
 {
@@ -384,9 +384,9 @@ static int GetOneSnapPic( int snapCh, void *buf, unsigned int *len )
 }
 
 /*
-* fn: ×¥ÅÄ½Ó¿Ú
-* snapCh: ÓÃ»§Í¨µÀ 0 ~ x
-* len: out, ×¥ÅÄµ½Í¼Æ¬µÄ³¤¶È
+* fn: æŠ“æ‹æ¥å£
+* snapCh: ç”¨æˆ·é€šé“ 0 ~ x
+* len: out, æŠ“æ‹åˆ°å›¾ç‰‡çš„é•¿åº¦
 */
 int SnapMpiGetJpg( int snapCh, char *buf, unsigned int *len )
 {
@@ -433,7 +433,7 @@ void SnapMpiDeinit()
     }
 }
 
-/* ===== º¯ÊıÖØÔØ, Ö÷ÒªÊÇÂú×ã procon Éè¼Æ ===== */
+/* ===== å‡½æ•°é‡è½½, ä¸»è¦æ˜¯æ»¡è¶³ procon è®¾è®¡ ===== */
 
 static uint g_proconJpgFd[REAL_CHANNEL_NUM];
 int GetChnProconJpgFd( int channel )
@@ -465,9 +465,9 @@ void DeinitProconJpgFd()
 }
 
 /*
-* fn: ´ò¿ªjpg Í¨µÀºó»ñÈ¡jpg ĞÅÏ¢
-* snapCh: ÓÃ»§Í¨µÀ 0 ~ x
-* stStream: out, ´Ómpi Ö±½Ó»ñÈ¡µÄĞÅÏ¢
+* fn: æ‰“å¼€jpg é€šé“åè·å–jpg ä¿¡æ¯
+* snapCh: ç”¨æˆ·é€šé“ 0 ~ x
+* stStream: out, ä»mpi ç›´æ¥è·å–çš„ä¿¡æ¯
 */
 static int GetJpgStream( int snapCh, VENC_STREAM_S *stStream )
 {
@@ -524,7 +524,7 @@ static int GetJpgStream( int snapCh, VENC_STREAM_S *stStream )
 }
 
 /*
-* fn: ÊÍ·Å´Ó GetOneSnapPicInfo() »ñÈ¡µ½µÄ×ÊÔ´
+* fn: é‡Šæ”¾ä» GetOneSnapPicInfo() è·å–åˆ°çš„èµ„æº
 */
 static int ReleaseJpgStreamAndStopSnapCh( int snapCh, VENC_STREAM_S *stStream )
 {
@@ -555,9 +555,9 @@ static int ReleaseJpgStreamAndStopSnapCh( int snapCh, VENC_STREAM_S *stStream )
 }
 
 /*
-* fn: »ñÈ¡Ò»ÕÅ×¥ÅÂÍ¼Æ¬
-* snapCh: ÓÃ»§Í¨µÀ 0 ~ x
-* stStream: out, ´Ómpi Ö±½Ó»ñÈ¡µÄĞÅÏ¢
+* fn: è·å–ä¸€å¼ æŠ“æ€•å›¾ç‰‡
+* snapCh: ç”¨æˆ·é€šé“ 0 ~ x
+* stStream: out, ä»mpi ç›´æ¥è·å–çš„ä¿¡æ¯
 */
 static int GetOneSnapPicInfo( int snapCh, VENC_STREAM_S *stStream )
 {
@@ -589,9 +589,9 @@ static void GetJpgDatetimeInfo( int sec, char *date, char *time )
 }
 
 /*
-* fn: ×¥ÅÄ½Ó¿Ú
-* snapCh: ÓÃ»§Í¨µÀ 0 ~ x
-* snapType: ×¥ÅÂÀàĞÍ
+* fn: æŠ“æ‹æ¥å£
+* snapCh: ç”¨æˆ·é€šé“ 0 ~ x
+* snapType: æŠ“æ€•ç±»å‹
 */
 int SnapMpiGetJpgAndToProcon( int snapCh, uint snapType )
 {
@@ -661,5 +661,5 @@ int SnapMpiGetJpgAndToProcon( int snapCh, uint snapType )
 	return ret;
 }
 
-/* ===== end º¯ÊıÖØÔØ, Ö÷ÒªÊÇÂ÷×¡ procon Éè¼Æ ===== */
+/* ===== end å‡½æ•°é‡è½½, ä¸»è¦æ˜¯ç’ä½ procon è®¾è®¡ ===== */
 #endif //#if defined MCU_HI3515

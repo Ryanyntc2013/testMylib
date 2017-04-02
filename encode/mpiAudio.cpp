@@ -620,7 +620,7 @@ static void GetAudioLocalParam( PARAM_CONFIG_AUDIO_ENCODE aParam, AUDIO_BIT_WIDT
                             	AUDIO_SAMPLE_RATE_E *enSamplerate, AUDIO_SOUND_MODE_E  *enSoundmode,
                             	PAYLOAD_TYPE_E  *playloadType )
 {
-	if( 0 == aParam.bitWidth ) // 1. Î»¿í
+	if( 0 == aParam.bitWidth ) // 1. ä½å®½
     {
         *enBitwidth = AUDIO_BIT_WIDTH_8;
     }
@@ -629,7 +629,7 @@ static void GetAudioLocalParam( PARAM_CONFIG_AUDIO_ENCODE aParam, AUDIO_BIT_WIDT
         *enBitwidth = AUDIO_BIT_WIDTH_16;
     }
 
-	if( 0 == aParam.sampleRate ) // 2. ²ÉÑùÂÊ
+	if( 0 == aParam.sampleRate ) // 2. é‡‡æ ·ç‡
     {
         *enSamplerate = AUDIO_SAMPLE_RATE_8000;
     }
@@ -638,7 +638,7 @@ static void GetAudioLocalParam( PARAM_CONFIG_AUDIO_ENCODE aParam, AUDIO_BIT_WIDT
         *enSamplerate = AUDIO_SAMPLE_RATE_16000;
     }
 
-	if( 0 == aParam.chMode ) // 3. Í¨µÀÄ£Ê½
+	if( 0 == aParam.chMode ) // 3. é€šé“æ¨¡å¼
     {
         *enSoundmode = AUDIO_SOUND_MODE_MONO;
     }
@@ -647,7 +647,7 @@ static void GetAudioLocalParam( PARAM_CONFIG_AUDIO_ENCODE aParam, AUDIO_BIT_WIDT
         *enSoundmode = AUDIO_SOUND_MODE_STEREO;
     }
 
-	if( 0 == aParam.encodeType ) // 4. ±àÂëÀàĞÍ
+	if( 0 == aParam.encodeType ) // 4. ç¼–ç ç±»å‹
     {
         *playloadType = PT_ADPCMA;
     }
@@ -975,8 +975,8 @@ int MympiAudioStartEnc()
 }
 
 /*
-* fn: ¹Ø±ÕÒôÆµ±àÂë×ÊÔ´
-* note: ¸Ãº¯ÊıÓÉ sven ¶¨Òå, ·Çº£Ë¼×Ô´ø
+* fn: å…³é—­éŸ³é¢‘ç¼–ç èµ„æº
+* note: è¯¥å‡½æ•°ç”± sven å®šä¹‰, éæµ·æ€è‡ªå¸¦
 */
 void MympiStopAudioEnc()
 {

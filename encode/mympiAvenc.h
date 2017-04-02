@@ -11,16 +11,16 @@
 
 typedef struct _AudioFlag_
 {
-	int  operateFlag;    // ²Ù×÷±êÖ¾, 1 ±íÊ¾ÓĞ±»ĞŞ¸Ä¹ı
-	uint val;             // 0,¹Ø±ÕÒôÆµ(½ö½öÊÓÆµÁ÷); 1,¿ªÆôÒôÆµ(ÒôÊÓÆµÁ÷)
+	int  operateFlag;    // æ“ä½œæ ‡å¿—, 1 è¡¨ç¤ºæœ‰è¢«ä¿®æ”¹è¿‡
+	uint val;             // 0,å…³é—­éŸ³é¢‘(ä»…ä»…è§†é¢‘æµ); 1,å¼€å¯éŸ³é¢‘(éŸ³è§†é¢‘æµ)
 } AUDIO_FLAG_T;
 
 typedef struct _AvencSt_
 {
 	pthread_t threadId;
 	int  runFlag;
-	AUDIO_FLAG_T	 avChange;    // ÒôÊÓÆµÁ÷ĞèÇó¸Ä±äÁË
-	AVENC_CHN          AVChnId;    // Í¨µÀ
+	AUDIO_FLAG_T	 avChange;    // éŸ³è§†é¢‘æµéœ€æ±‚æ”¹å˜äº†
+	AVENC_CHN          AVChnId;    // é€šé“
 	AVENC_OPERATE_OBJECT_E enObject;
 } AVENC_ST;
 

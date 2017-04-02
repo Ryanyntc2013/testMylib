@@ -1,10 +1,10 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : µ÷ÓÃº£Ë¼½Ó¿Ú, ÊµÏÖÒôÊÓÆµÍ¬²½È¡Á÷
+**  description  : è°ƒç”¨æµ·æ€æ¥å£, å®ç°éŸ³è§†é¢‘åŒæ­¥å–æµ
 *******************************************************************************
 */
 #if defined MCU_HI3515//do  not use these func
@@ -14,7 +14,7 @@
 #if defined MCU_HI3515
 #include "mpi_avenc.h"
 #endif
-#include "hi_common.h"
+#include "sample_comm.h.h"
 
 #include "mympiAvenc.h"
 #include "const.h"
@@ -39,11 +39,11 @@ static void InitAvencSt()
     	ret = ParamGetVideoEncode( i, &param );
     	if( 0 == ret )
         {
-        	if( 0 != param.encodeType ) // ÊÓÆµÁ÷
+        	if( 0 != param.encodeType ) // è§†é¢‘æµ
             {
             	g_avencSt[i].enObject = AVENC_OPERATION_VIDEO;
             }
-        	else // ÒôÊÓÆµÁ÷
+        	else // éŸ³è§†é¢‘æµ
             {
             	g_avencSt[i].enObject = AVENC_OPERATION_BOTH;
             }
@@ -209,7 +209,7 @@ static int DestoryAvencChannel()
         {
             SVPrint( "Some AVENC buffer may be hold by user! Be sure to release all"\
                "buffer! Otherwise some exception may arose!\n" );
-            /* Èç¹ûÈ·ĞÅ²»»áÔÙ²Ù×÷¸´ºÏ±àÂëÍ¨µÀ£¬¿ÉÒÔÇ¿ÖÆÏú»Ù±àÂëÍ¨µÀ. */
+            /* å¦‚æœç¡®ä¿¡ä¸ä¼šå†æ“ä½œå¤åˆç¼–ç é€šé“ï¼Œå¯ä»¥å¼ºåˆ¶é”€æ¯ç¼–ç é€šé“. */
             ret = HI_MPI_AVENC_DestroyCH( g_avencSt[i].AVChnId, HI_TRUE );
         	if( HI_SUCCESS != ret )
             {
@@ -241,8 +241,8 @@ int MympiAvencStop()
 }
 
 /*
-* fn: ÉèÖÃ°éÒô¿ª¹Ø
-* openFlag: 0,¹Ø±Õ°éÒôÒôÆµ; 1,´ò¿ª°éÒôÒôÆµ
+* fn: è®¾ç½®ä¼´éŸ³å¼€å…³
+* openFlag: 0,å…³é—­ä¼´éŸ³éŸ³é¢‘; 1,æ‰“å¼€ä¼´éŸ³éŸ³é¢‘
 */
 int MympiSetAvencAccompanyingAudio( int channel, int openFlag )
 {

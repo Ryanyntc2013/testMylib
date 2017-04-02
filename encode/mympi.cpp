@@ -1,15 +1,15 @@
 /*
 *********************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.11.06
-**  description  : ·â×°Ò»ÏÂhisi µÄmpi ½Ó¿Ú, ¸øÍâ½çÌá¹©½Ó¿Ú
+**  description  : å°è£…ä¸€ä¸‹hisi çš„mpi æ¥å£, ç»™å¤–ç•Œæä¾›æ¥å£
 *********************************************************************
 */
 
 #include "mpi_venc.h"
-#include "hi_common.h"
+#include "sample_comm.h.h"
 #include "hicomm.h"
 #include "const.h"
 #include "debug.h"
@@ -19,7 +19,7 @@
 
 static CMutexLock g_mympiMutex;
 /*
-* fn: Ç¿ÖÆi Ö¡
+* fn: å¼ºåˆ¶i å¸§
 */
 int MympiForceIframe( int channel )
 {
@@ -27,7 +27,7 @@ int MympiForceIframe( int channel )
 }
 
 /*
-* fn: ÉèÖÃÍ¼ÏñµÈ¼¶,[0,5],
+* fn: è®¾ç½®å›¾åƒç­‰çº§,[0,5],
 * val: [0..5]. Valid when CBR/VBR.
  	With different RC mode, it means differ.
  	CBR: scope of bitrate fluctuate. 1-5: 10%-50%. 0: SDK optimized, recommended;
@@ -71,7 +71,7 @@ int MympiSetLevel( int channel, int val )
 }
 
 /*
-* fn: ÉèÖÃ±ÈÌØÂÊÀàĞÍ
+* fn: è®¾ç½®æ¯”ç‰¹ç‡ç±»å‹
 */
 int MympiSetBitrateType( int channel, int val )
 {
@@ -111,7 +111,7 @@ int MympiSetBitrateType( int channel, int val )
 }
 
 /*
-* fn: ÉèÖÃ±ÈÌØÂÊ
+* fn: è®¾ç½®æ¯”ç‰¹ç‡
 */
 int MympiSetBitrate( int channel, int val )
 {
@@ -152,7 +152,7 @@ int MympiSetBitrate( int channel, int val )
 
 
 /*
-* fn: ÉèÖÃÖ¡ÂÊÂÊ
+* fn: è®¾ç½®å¸§ç‡ç‡
 */
 int MympiSetFramerate( int channel, int val )
 {
@@ -199,7 +199,7 @@ int MympiSetFramerate( int channel, int val )
 }
 
 /*
-* fn: ÉèÖÃI Ö¡¼ä¸ô
+* fn: è®¾ç½®I å¸§é—´éš”
 */
 int MympiSetIframeInterval( int channel, int val )
 {
@@ -238,10 +238,10 @@ int MympiSetIframeInterval( int channel, int val )
 }
 
 /*
-* fn: ÉèÖÃ·Ö±æÂÊ
-	1. µ±ÉèÖÃÊÓÆµ²ÎÊıÉæ¼°µ½ÊÓÆµ·Ö±æÂÊÊ±µ÷ÓÃ
-	2. ·¢ËÍÏûÏ¢¸æËß¶¨Ê±Æ÷,Ö´ĞĞÖØÆôÊÓÆµ±àÂëÏß³ÌµÄ¶¯×÷
-	3. ÉèÖÃ·Ö±æÂÊÉæ¼°µ½×ÊÔ´µÄÖØĞÂ·ÖÅä,ËùÒÔ·¢ÏûÏ¢ÖØÆô±àÂëÏß³Ì
+* fn: è®¾ç½®åˆ†è¾¨ç‡
+	1. å½“è®¾ç½®è§†é¢‘å‚æ•°æ¶‰åŠåˆ°è§†é¢‘åˆ†è¾¨ç‡æ—¶è°ƒç”¨
+	2. å‘é€æ¶ˆæ¯å‘Šè¯‰å®šæ—¶å™¨,æ‰§è¡Œé‡å¯è§†é¢‘ç¼–ç çº¿ç¨‹çš„åŠ¨ä½œ
+	3. è®¾ç½®åˆ†è¾¨ç‡æ¶‰åŠåˆ°èµ„æºçš„é‡æ–°åˆ†é…,æ‰€ä»¥å‘æ¶ˆæ¯é‡å¯ç¼–ç çº¿ç¨‹
 */
 int MympiSetResolution()
 {
@@ -250,10 +250,10 @@ int MympiSetResolution()
 }
 
 /*
-* fn: ÉèÖÃÊÓÆµ±ê×¼
-     1. µ±ÉèÖÃÊÓÆµ²ÎÊıÉæ¼°µ½ÊÓÆµÖÆÊ½Ê±µ÷ÓÃ
-     2. ·¢ËÍÏûÏ¢¸æËß¶¨Ê±Æ÷,Ö´ĞĞÖØÆôÊÓÆµ±àÂëÏß³ÌµÄ¶¯×÷
-     3. ÉèÖÃÊÓÆµÖÆÊ½Éæ¼°µ½×ÊÔ´µÄÖØĞÂ·ÖÅä,ËùÒÔ·¢ÏûÏ¢ÖØÆô±àÂëÏß³Ì
+* fn: è®¾ç½®è§†é¢‘æ ‡å‡†
+     1. å½“è®¾ç½®è§†é¢‘å‚æ•°æ¶‰åŠåˆ°è§†é¢‘åˆ¶å¼æ—¶è°ƒç”¨
+     2. å‘é€æ¶ˆæ¯å‘Šè¯‰å®šæ—¶å™¨,æ‰§è¡Œé‡å¯è§†é¢‘ç¼–ç çº¿ç¨‹çš„åŠ¨ä½œ
+     3. è®¾ç½®è§†é¢‘åˆ¶å¼æ¶‰åŠåˆ°èµ„æºçš„é‡æ–°åˆ†é…,æ‰€ä»¥å‘æ¶ˆæ¯é‡å¯ç¼–ç çº¿ç¨‹
 */
 int MympiSetVideoStandard()
 {
@@ -262,10 +262,10 @@ int MympiSetVideoStandard()
 }
 
 /*
-* fn: ÉèÖÃÒôÆµ±àÂëÀàĞÍ
-     1. µ±ÉèÖÃÒôÆµ²ÎÊıÉæ¼°µ½±àÂëÀàĞÍÊ±µ÷ÓÃ
-     2. ·¢ËÍÏûÏ¢¸æËß¶¨Ê±Æ÷,Ö´ĞĞÖØÆôÊÓÆµ±àÂëÏß³ÌµÄ¶¯×÷
-     3. Èç¹û½ö½öÖØÆôÒôÆµ±àÂë²¿·Ö,¿ÉÄÜ»áÓ°Ïìµ½ÒôÊÓÆµÍ¬²½Í¨µÀ,ËùÒÔÕû¸ö±àÂë¿âÖØÆô
+* fn: è®¾ç½®éŸ³é¢‘ç¼–ç ç±»å‹
+     1. å½“è®¾ç½®éŸ³é¢‘å‚æ•°æ¶‰åŠåˆ°ç¼–ç ç±»å‹æ—¶è°ƒç”¨
+     2. å‘é€æ¶ˆæ¯å‘Šè¯‰å®šæ—¶å™¨,æ‰§è¡Œé‡å¯è§†é¢‘ç¼–ç çº¿ç¨‹çš„åŠ¨ä½œ
+     3. å¦‚æœä»…ä»…é‡å¯éŸ³é¢‘ç¼–ç éƒ¨åˆ†,å¯èƒ½ä¼šå½±å“åˆ°éŸ³è§†é¢‘åŒæ­¥é€šé“,æ‰€ä»¥æ•´ä¸ªç¼–ç åº“é‡å¯
 */
 int MympiSetAudioEncType()
 {

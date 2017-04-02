@@ -1,9 +1,9 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdComm.h
-**  description  : ¶¨ÒåÒ»Ğ©OSD¹²ÓÃµÄºê
+**	æ–‡ä»¶å: osdComm.h
+**  description  : å®šä¹‰ä¸€äº›OSDå…±ç”¨çš„å®
 **  date           :  2013.10.18
 **
 **  version       :  1.0
@@ -40,11 +40,11 @@
 
 #define NOCOLOR  0x0fff 
 
-#define FGALPHAMASK 0x8000     /*Ç°¾°É«ÑÚÂë*/
-#define BGALPHAMASK 0x7fff     /*±³¾°É«ÑÚÂë*/
+#define FGALPHAMASK 0x8000     /*å‰æ™¯è‰²æ©ç */
+#define BGALPHAMASK 0x7fff     /*èƒŒæ™¯è‰²æ©ç */
 
 #define SCREENWIDTH 800
-#define SCREENHIGH 32           /*32´óĞ¡*/
+#define SCREENHIGH 32           /*32å¤§å°*/
 
 #define  BLACK_COLOR      	0x0000
 #define  BLUE_COLOR      	0x101f

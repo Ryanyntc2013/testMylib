@@ -1,9 +1,9 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: encComm.h
-**  description  : ¶¨ÒåÒ»Ğ©±àÂë¿â¹«ÓÃµÄºêºÍ³£Á¿
+**	æ–‡ä»¶å: encComm.h
+**  description  : å®šä¹‰ä¸€äº›ç¼–ç åº“å…¬ç”¨çš„å®å’Œå¸¸é‡
 **  date           :  2013.10.18
 **
 **  version       :  1.0
@@ -15,7 +15,7 @@
 
 #include "const.h"
 
-/******ADĞ¾Æ¬ÀàĞÍ******/
+/******ADèŠ¯ç‰‡ç±»å‹******/
 #define AD_NOCHIP		0
 #define AD_TVP5150		1
 #define AD_TW2815A     	2
@@ -23,14 +23,14 @@
 #define AD_TW2815ABCD	4
 #define	AD_CMOS_MT9D131	5
 #define AD_TW2865A      6
-/******ÊÓÆµÖÆÊ½******/
+/******è§†é¢‘åˆ¶å¼******/
 typedef enum VideoStandard
 {
 	HI_PAL = 0,
 	HI_NTSC = 1
 }VIDEO_STANDARD_E;
 
-/******ÊÓÆµ·Ö±æÂÊ******/
+/******è§†é¢‘åˆ†è¾¨ç‡******/
 typedef enum PictureFormat 
 {
 	HI_QCIF = 0,
@@ -44,14 +44,14 @@ typedef enum PictureFormat
 	HI_SXGA
 }PICTURE_FORMAT_E;
 
-/******ÊÓÆµÁ÷¿ØÀàĞÍ******/
+/******è§†é¢‘æµæ§ç±»å‹******/
 typedef enum VideoBitrateMode
 {
 	HI_CBR = 0,
 	HI_VBR = 1
 }VIDEO_BITRATE_MODE;
 
-/******±àÂëÂëÁ÷ÖÖÀà******/
+/******ç¼–ç ç æµç§ç±»******/
 typedef enum
 {
 	HI_AUDIO = 0,
@@ -63,20 +63,20 @@ typedef enum
 #define DEFAULT_ENCODE_RESOLUTION		HI_D1	    //cif
 #define DEFAULT_ENCODE_SUB_RESOLUTION	HI_CIF         //cif
 #define DEFAULT_ENCODE_BITRATE_TYPE		HI_CBR         //CBR
-#define DEFAULT_ENCODE_LEVEL	    	128	        //»­ÖÊ(¼´ÂëÂÊ32~4000 kbits) 
-#define DEFAULT_ENCODE_FRAME_RATE		25	        //Ö¡ÂÊ(PAL:1~25,NTSC:1~30)
-#define DEFAULT_ENCODE_FRAME_INTERVAL	50	        //IÖ¡¼ä¸ô(1~149)
-#define DEFAULT_ENCODE_PREFER_FRAME		1              //0 »­ÖÊÓÅÏÈ, 1 ÕêÂÊÓÅÏÈ ,3512ÒÑ¾­²»Ö§³Ö
-#define DEFAULT_ENCODE_MAX_QP	    	32	        //QP,3512ÒÑ¾­²»Ö§³Ö
-#define DEFAULT_ENCODE_TYPE	        	HI_VIDEO    //0: ÒôÊÓÆµÁ÷, 1: ÊÓÆµÁ÷, 2: ÒôÆµÁ÷
+#define DEFAULT_ENCODE_LEVEL	    	128	        //ç”»è´¨(å³ç ç‡32~4000 kbits) 
+#define DEFAULT_ENCODE_FRAME_RATE		25	        //å¸§ç‡(PAL:1~25,NTSC:1~30)
+#define DEFAULT_ENCODE_FRAME_INTERVAL	50	        //Iå¸§é—´éš”(1~149)
+#define DEFAULT_ENCODE_PREFER_FRAME		1              //0 ç”»è´¨ä¼˜å…ˆ, 1 è´ç‡ä¼˜å…ˆ ,3512å·²ç»ä¸æ”¯æŒ
+#define DEFAULT_ENCODE_MAX_QP	    	32	        //QP,3512å·²ç»ä¸æ”¯æŒ
+#define DEFAULT_ENCODE_TYPE	        	HI_VIDEO    //0: éŸ³è§†é¢‘æµ, 1: è§†é¢‘æµ, 2: éŸ³é¢‘æµ
 #define DEFAULT_AUDIO_SAMPLE_RATE		0	        //8K	
 #define DEFAULT_AUDIO_BIT_WIDTH	    	1	        //16bit
 #define DEFAULT_AUDIO_ENCODE_TYPE		5	        //g726_24k
 #define DEFAULT_AMR_MODE	        	0	        //MIME
 #define DEFAULT_AMR_FORMAT	        	0	        //4.75K
 
-#define MAX_CHANNEL_PER_DEV	        	4	        // Ò»¸övidev Ö§³Ö4¸öÍ¨µÀÊ±·Ö¸´ÓÃ
-#define MAX_JPEG_SIZE                     (512*1024)        /*×¥ÅÄ×î´óÖ§³Ö512KbytesJPEG*/
+#define MAX_CHANNEL_PER_DEV	        	4	        // ä¸€ä¸ªvidev æ”¯æŒ4ä¸ªé€šé“æ—¶åˆ†å¤ç”¨
+#define MAX_JPEG_SIZE                     (512*1024)        /*æŠ“æ‹æœ€å¤§æ”¯æŒ512KbytesJPEG*/
 
 #endif //__ENC_COMM_H__
 

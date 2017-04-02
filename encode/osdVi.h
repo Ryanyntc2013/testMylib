@@ -1,8 +1,8 @@
 /*
 *******************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¿Æ¼¼¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾
+**  Copyright (c) 2013, æ·±åœ³å¸‚ç§‘æŠ€åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸
 **  All rights reserved.
-**	ÎÄ¼şÃû: osdVi.h
+**	æ–‡ä»¶å: osdVi.h
 **  description  : for osdVi.cpp
 **  date           :  2013.10.18
 **
@@ -14,8 +14,8 @@
 #ifndef __OSD_VI_H__
 #define __OSD_VI_H__
 #include "hi_comm_region.h"
-#define OSD_ALIGN_X 8  // ×İ×ø±ê8 ¸öÏñËØ¶ÔÆë
-#define OSD_ALIGN 	2  // 2 ¸öÏñËØ¶ÔÆë
+#define OSD_ALIGN_X 8  // çºµåæ ‡8 ä¸ªåƒç´ å¯¹é½
+#define OSD_ALIGN 	2  // 2 ä¸ªåƒç´ å¯¹é½
 
 #if defined MCU_HI3515A
 
@@ -29,20 +29,20 @@ typedef struct OsdViParamBuf
 }OSD_VI_PARAM_BUF;
 
 
-/*³õÊ¼»¯OSD¿â*/
+/*åˆå§‹åŒ–OSDåº“*/
 int FiOsdViInitOsdLib(void);
-/*½â³õÊ¼»¯OSD¿â */
+/*è§£åˆå§‹åŒ–OSDåº“ */
 int FiOsdViDeinitOsdLib(void);
 int FiOsdViInitOsd( VENC_GRP VeGroup,OSD_RECT rc, unsigned int color,  
                 	uchar bgTransparence, RGN_HANDLE *handle );
 
 int FiOsdViDestroyOsd(RGN_HANDLE handle);
 
-/*ÉèÖÃµ±Ç°µş¼Ó²ãÏÔÊ¾»¹ÊÇÒş²Ø.
-bshow :  1£¬ÏÔÊ¾ 0£¬Òş²Ø */
+/*è®¾ç½®å½“å‰å åŠ å±‚æ˜¾ç¤ºè¿˜æ˜¯éšè—.
+bshow :  1ï¼Œæ˜¾ç¤º 0ï¼Œéšè— */
 int FiOsdViSetShow(RGN_HANDLE handle, int bshow);
 
-/*Ğ´Ò»¸ö×Ö·û´®.  */
+/*å†™ä¸€ä¸ªå­—ç¬¦ä¸².  */
 int FiOsdViDrawString(RGN_HANDLE handle, int color, int x, int y, 
             	const char *string, int font_size, int lace);
 int FiOsdViInitOsdBgClrEx( VENC_GRP VeGroup,OSD_RECT rc, unsigned int color,  
