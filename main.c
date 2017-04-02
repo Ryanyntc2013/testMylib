@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <errno.h>
 #include "rtspLib.h"
+#include "encode/sample_encode.h"
+#include "proconApp.h"
 
 static int s32_quit = 0;
 
@@ -40,6 +42,8 @@ int main(int argc, char *argv[])
     init_signals();
     s32_quit = 0;
     pthread_create(&id, NULL, SAMPLE_VENC_1080P_CLASSIC, NULL);
+    ProconInit();
+    encode_service_start();
     RtspServiceStart();
 
     while (!s32_quit) {

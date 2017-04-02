@@ -11,8 +11,20 @@
 #define MAX_YUV_DATA_NODE		8
 #define MAX_YUV_DATA_SIZE	    (720 * 576 * 2) // 一帧YUV数据
 
+#ifdef __cplusplus
+#if __cplusplus
+extern "C"
+{
+#endif
+#endif
 
 void ProconInit();
+
+#ifdef __cplusplus
+#if __cplusplus
+}
+#endif
+#endif
 
 #endif
 
