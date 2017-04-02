@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ·â×° socketÍ¨ĞÅ Ïà¹Øº¯Êı
+**  description  : å°è£… socketé€šä¿¡ ç›¸å…³å‡½æ•°
 ********************************************************************************/
 
 #include <stdio.h>
@@ -28,7 +28,7 @@ int SocketUdpListen( int *pUdpSocket, unsigned short port )
 	if ( nSocket == -1 ) return nRet;
 
 	unsigned long ul = 1;
- 	ioctl( nSocket, FIONBIO, &ul );  // ÉèÖÃÎª·Ç×èÈûÄ£Ê½
+ 	ioctl( nSocket, FIONBIO, &ul );  // è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼
      
 	struct sockaddr_in my_addr = { 0 };
 	my_addr.sin_family	    = AF_INET;
@@ -52,7 +52,7 @@ int SocketUdpListen( int *pUdpSocket, unsigned short port )
 }
 
 /****************************************************
-* Ö¸¶¨ip¼°portÀ´listen
+* æŒ‡å®šipåŠportæ¥listen
 ******************************************************/
 int SocketUdpListenAddr( int *pUdpSocket, char *ip, unsigned short port )
 {
@@ -62,7 +62,7 @@ int SocketUdpListenAddr( int *pUdpSocket, char *ip, unsigned short port )
 	if ( nSocket == -1 ) return nRet;
 
 	unsigned long ul = 1;
- 	ioctl( nSocket, FIONBIO, &ul );  // ÉèÖÃÎª·Ç×èÈûÄ£Ê½
+ 	ioctl( nSocket, FIONBIO, &ul );  // è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼
      
 	struct sockaddr_in my_addr = { 0 };
 	my_addr.sin_family	    = AF_INET;
@@ -98,7 +98,7 @@ int SocketUdpClient( int *pUdpSocket)
     	return nRet;
     }
 
- 	nRet = ioctl( nSocket, FIONBIO, &ul );  // ÉèÖÃÎª·Ç×èÈûÄ£Ê½     
+ 	nRet = ioctl( nSocket, FIONBIO, &ul );  // è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼     
 	if ( nRet == -1 )
     {
     	close( nSocket );
@@ -135,7 +135,7 @@ int SocketTcpListen( int *pTcpSocket, unsigned short port, int blockFlag )
 	if(SOCKET_NOBLOCK == blockFlag)        
     {
     	unsigned long ul = 1;
-     	ioctl( nSocket, FIONBIO, &ul );  //ÉèÖÃÎª·Ç×èÈûÄ£Ê½	
+     	ioctl( nSocket, FIONBIO, &ul );  //è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼	
     }
      
 	struct sockaddr_in my_addr = { 0 };
@@ -157,13 +157,13 @@ int SocketTcpListen( int *pTcpSocket, unsigned short port, int blockFlag )
 }
 
 /******************************************************************************
-* fn: ´´½¨Ò»¸öTCPÁ¬½Ó, connectµÄ³¬Ê±Îª TCP_CONNECT_TIMEOUT
-* ip: ·şÎñÆ÷µÄIP
-* port: ·şÎñÆ÷µÄlisten ¶Ë¿Ú
-* blockFlag: ÊÇ·ñ×èÈû, SOCKET_BLOCK or SOCKET_NOBLOCK
-* timeoutMs: ³¬Ê±Ê±¼äms, ´óÓÚ1000 µÄÊ±ºòÓĞĞ§, ·ñÔòÊ¹ÓÃÄ¬ÈÏÖµ
-* sendBufSize: ·¢ËÍ»º³åÇø´óĞ¡, ´óÓÚ512 Ê±ÉúĞ§, ·ñÔòÊ¹ÓÃÄ¬ÈÏÖµ
-* pTcpSocket: out, ´´½¨³É¹¦ºóµÄsocket
+* fn: åˆ›å»ºä¸€ä¸ªTCPè¿æ¥, connectçš„è¶…æ—¶ä¸º TCP_CONNECT_TIMEOUT
+* ip: æœåŠ¡å™¨çš„IP
+* port: æœåŠ¡å™¨çš„listen ç«¯å£
+* blockFlag: æ˜¯å¦é˜»å¡, SOCKET_BLOCK or SOCKET_NOBLOCK
+* timeoutMs: è¶…æ—¶æ—¶é—´ms, å¤§äº1000 çš„æ—¶å€™æœ‰æ•ˆ, å¦åˆ™ä½¿ç”¨é»˜è®¤å€¼
+* sendBufSize: å‘é€ç¼“å†²åŒºå¤§å°, å¤§äº512 æ—¶ç”Ÿæ•ˆ, å¦åˆ™ä½¿ç”¨é»˜è®¤å€¼
+* pTcpSocket: out, åˆ›å»ºæˆåŠŸåçš„socket
 *******************************************************************************/
 int SocketTcpConnect( char *ip, unsigned short port, int blockFlag, 
                      int timeoutMs, int sendBufSize, int *pTcpSocket  )
@@ -209,7 +209,7 @@ int SocketTcpConnect( char *ip, unsigned short port, int blockFlag,
 	if ( 0 == nRet && SOCKET_NOBLOCK == blockFlag)
     {
     	ul = 1;
-     	nRet = ioctl( nSocket, FIONBIO, &ul );  //ÉèÖÃÎª·Ç×èÈûÄ£Ê½	
+     	nRet = ioctl( nSocket, FIONBIO, &ul );  //è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼	
     }
 	if( 0 == nRet && sendBufSize >= 512 )
     {
@@ -230,11 +230,11 @@ int SocketTcpConnect( char *ip, unsigned short port, int blockFlag,
 }
 
 /*******************************************************************************
-* fn: ´´½¨Ò»¸öTCP·Ç×èÈûµÄÁ¬½Ó, connectµÄ³¬Ê±Îª timeoutMs
-* pTcpSocket: out, ´´½¨³É¹¦ºóµÄsocket
-* ip: ·şÎñÆ÷µÄIP
-* port: ·şÎñÆ÷µÄlisten ¶Ë¿Ú
-* timeoutMs: Á¬½ÓµÄ³¬Ê±Ê±¼ä,ms
+* fn: åˆ›å»ºä¸€ä¸ªTCPéé˜»å¡çš„è¿æ¥, connectçš„è¶…æ—¶ä¸º timeoutMs
+* pTcpSocket: out, åˆ›å»ºæˆåŠŸåçš„socket
+* ip: æœåŠ¡å™¨çš„IP
+* port: æœåŠ¡å™¨çš„listen ç«¯å£
+* timeoutMs: è¿æ¥çš„è¶…æ—¶æ—¶é—´,ms
 ********************************************************************************/
 int SocketTcpConnectTimtout( int *pTcpSocket, char *ip, unsigned short port, int timeoutMs  )
 {
@@ -274,7 +274,7 @@ int SocketTcpConnectTimtout( int *pTcpSocket, char *ip, unsigned short port, int
     {
 
     	unsigned long ul = 1;
-    	nRet = ioctl( nSocket, FIONBIO, &ul );  //ÉèÖÃÎª·Ç×èÈûÄ£Ê½	
+    	nRet = ioctl( nSocket, FIONBIO, &ul );  //è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼	
     	if( 0 != nRet )
         {
         	close( nSocket );
@@ -299,8 +299,8 @@ int SocketTcpConnectTimtout( int *pTcpSocket, char *ip, unsigned short port, int
 
 
 /******************************************************************************
-* fn: ´´½¨Ò»¸ötcpÁ¬½Ó,¹¦ÄÜºÍInitTcpConnect ÀàËÆ,µ«ÓĞÇø±ğ
-      ²»Í¬µãÔÚÓÚËüÊÇÃ»ÓĞÉèÖÃÊÇ·ñ×èÈûµÄ²ÎÊı,²¢ÇÒconnect ÊÇÎŞÏŞÆÚµØµÈ´ı
+* fn: åˆ›å»ºä¸€ä¸ªtcpè¿æ¥,åŠŸèƒ½å’ŒInitTcpConnect ç±»ä¼¼,ä½†æœ‰åŒºåˆ«
+      ä¸åŒç‚¹åœ¨äºå®ƒæ˜¯æ²¡æœ‰è®¾ç½®æ˜¯å¦é˜»å¡çš„å‚æ•°,å¹¶ä¸”connect æ˜¯æ— é™æœŸåœ°ç­‰å¾…
 ********************************************************************************/
 int SocketTcpConnectBlock( int *pTcpSocket, char *ip, unsigned short port )
 {
@@ -339,7 +339,7 @@ int SocketTcpConnectBlock( int *pTcpSocket, char *ip, unsigned short port )
 
 /******************************************************************************
 * fn: accept
-* ·µ»Ø: -1, ³ö´í; ·ñÔò·µ»ØÒ»¸öaccept ºóµÄsocket
+* è¿”å›: -1, å‡ºé”™; å¦åˆ™è¿”å›ä¸€ä¸ªaccept åçš„socket
 ******************************************************************************/
 int Accept( int listenSocket )
 {
@@ -355,8 +355,8 @@ int Accept( int listenSocket )
 
 
 /*****************************************************************************
-* fn: accept,²¢ÇÒ°Ñaccept ºóµÄsocket ÉèÖÃ³É·Ç×èÈû
-* ·µ»Ø: -1, ³ö´í; ·ñÔò·µ»ØÒ»¸öaccept ºóµÄsocket
+* fn: accept,å¹¶ä¸”æŠŠaccept åçš„socket è®¾ç½®æˆéé˜»å¡
+* è¿”å›: -1, å‡ºé”™; å¦åˆ™è¿”å›ä¸€ä¸ªaccept åçš„socket
 ******************************************************************************/
 int AcceptNoblock( int listenSocket )
 {
@@ -389,7 +389,7 @@ int AcceptNoblock( int listenSocket )
 }
 
 /***************************************************************************
-* fn: °Ñsocket ÉèÖÃ³É·Ç×èÈû
+* fn: æŠŠsocket è®¾ç½®æˆéé˜»å¡
 ****************************************************************************/
 int SetSocketNonblock( int socket )
 {
@@ -413,9 +413,9 @@ int SetSocketNonblock( int socket )
 }
 
 /**************************************************************************
-* fn: select socket ÊÇ·ñ¿É¶Á
-* socket: ¼ì²âµÄsocket
-* maxMsec: ³¬Ê±Ê±¼ä,µ¥Î»ºÁÃë
+* fn: select socket æ˜¯å¦å¯è¯»
+* socket: æ£€æµ‹çš„socket
+* maxMsec: è¶…æ—¶æ—¶é—´,å•ä½æ¯«ç§’
 ***************************************************************************/
 int SelectRead( int socket, int maxMsec )
 {
@@ -438,9 +438,9 @@ int SelectRead( int socket, int maxMsec )
 }
 
 /**************************************************************************
-* fn: select socket ÊÇ·ñ¿ÉĞ´
-* socket: ¼ì²âµÄsocket
-* maxMsec: ³¬Ê±Ê±¼ä,µ¥Î»ºÁÃë
+* fn: select socket æ˜¯å¦å¯å†™
+* socket: æ£€æµ‹çš„socket
+* maxMsec: è¶…æ—¶æ—¶é—´,å•ä½æ¯«ç§’
 ***************************************************************************/
 int SelectWrite( int socket, int maxMsec )
 {
@@ -464,7 +464,7 @@ int SelectWrite( int socket, int maxMsec )
 
 /**************************************************************************
 * fn: accept
-* ·µ»Ø: -1, ³ö´í; ·ñÔò·µ»ØÒ»¸öaccept ºóµÄsocket
+* è¿”å›: -1, å‡ºé”™; å¦åˆ™è¿”å›ä¸€ä¸ªaccept åçš„socket
 **************************************************************************/
 int Getsockname( int socket, char *pIp, int *pPort )
 {
@@ -507,12 +507,12 @@ static int Sendto( int fd, const void *ptr, int nbytes, int flags,
 }
 
 /***************************************************************************
-* fn: udp ·¢ËÍ
-* socket: SocketUdpClient() µÃµ½µÄÖµ
-* ip: ·¢ËÍµ½Õâ¸öip µØÖ·
-* port: Ä¿µÄ¶Ë¿Ú
-* pBuf: ·¢ËÍÄÚÈİbuf
-* sendLen: ·¢ËÍ³¤¶È
+* fn: udp å‘é€
+* socket: SocketUdpClient() å¾—åˆ°çš„å€¼
+* ip: å‘é€åˆ°è¿™ä¸ªip åœ°å€
+* port: ç›®çš„ç«¯å£
+* pBuf: å‘é€å†…å®¹buf
+* sendLen: å‘é€é•¿åº¦
 *****************************************************************************/
 int UdpSendto( int socket, char *ip, unsigned short port, 
             	unsigned char *pBuf, unsigned int sendLen )
@@ -531,10 +531,10 @@ int UdpSendto( int socket, char *ip, unsigned short port,
 }
 
 /********************************************************************
-* fn: ÍøÂçµØÖ··­Òë
-* netAddr: ÍøÂçµØÖ·
-* addr: out, µÃµ½µÄip µØÖ·
-* port: out, µÃµ½µÄ¶Ë¿Ú
+* fn: ç½‘ç»œåœ°å€ç¿»è¯‘
+* netAddr: ç½‘ç»œåœ°å€
+* addr: out, å¾—åˆ°çš„ip åœ°å€
+* port: out, å¾—åˆ°çš„ç«¯å£
 ***********************************************************************/
 void Ntop( struct sockaddr_in netAddr, char *addr, ushort *port )
 {
@@ -564,9 +564,9 @@ int Connect( int sockfd, char *ip, ushort port )
 }
 
 /******************************************************************************
-* fn: Íùsocket ·¢ËÍlen ¸ö×Ö½Ú,Ö±µ½·¢ËÍÍê±Ï»òÕß³ö´í²Å·µ»Ø
-* ·µ»ØÖµ: 0, ±êÊ¶³É¹¦, -1, ±êÊ¶Ê§°Ü
-* ÌØ±ğ×¢Òâ: Õâ¸ösendn µÄ·â×°·µ»ØÖµ¸ùÒ»°ãµÄsend µÄ·µ»ØÖµ²»Ò»Ñù,
+* fn: å¾€socket å‘é€len ä¸ªå­—èŠ‚,ç›´åˆ°å‘é€å®Œæ¯•æˆ–è€…å‡ºé”™æ‰è¿”å›
+* è¿”å›å€¼: 0, æ ‡è¯†æˆåŠŸ, -1, æ ‡è¯†å¤±è´¥
+* ç‰¹åˆ«æ³¨æ„: è¿™ä¸ªsendn çš„å°è£…è¿”å›å€¼æ ¹ä¸€èˆ¬çš„send çš„è¿”å›å€¼ä¸ä¸€æ ·,
 ********************************************************************************/
 int Sendn( int socket, const void *buf, uint len )
 {
@@ -596,7 +596,7 @@ int Sendn( int socket, const void *buf, uint len )
         }
     	else if( 0 == ret )
         {
-        	if( ++count >= 60 ) //Èç¹û°ë·ÖÖÓ¶¼Ã»ÓĞ·´Ó¦,ÔòÍË³ö
+        	if( ++count >= 60 ) //å¦‚æœåŠåˆ†é’Ÿéƒ½æ²¡æœ‰ååº”,åˆ™é€€å‡º
             {
             	ret = -1;
             	break; // while( leftLen > 0

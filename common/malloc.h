@@ -1,11 +1,11 @@
 #ifndef __MALLOCW_H__
 #define __MALLOCW_H__
 
-// ָ��������Դ
+// 指针数据来源
 typedef enum _PdataFrom_
 {
-	PDATA_FROM_MALLOC = 0,        // ָʾ�ڴ���ͨ��malloc �����
-	PDATA_FROM_SHAREMALLOC	    // ָʾ�ڴ���ͨ��ShareMalloc �����
+	PDATA_FROM_MALLOC = 0,        // 指示内存是通过malloc 分配的
+	PDATA_FROM_SHAREMALLOC	    // 指示内存是通过ShareMalloc 分配的
 } PDATA_FROM_E;
 
 

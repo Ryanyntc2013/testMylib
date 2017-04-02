@@ -6,8 +6,8 @@
 #include <errno.h>
 #include <string.h>  
 
-#define FI_PRINTF_LEVEL_1	    // µÚÒ»²ãµ÷ÊÔ
-#define FI_PRINTF_LEVEL_2	    // µÚ¶ş²ãµ÷ÊÔ        
+#define FI_PRINTF_LEVEL_1	    // ç¬¬ä¸€å±‚è°ƒè¯•
+#define FI_PRINTF_LEVEL_2	    // ç¬¬äºŒå±‚è°ƒè¯•        
       
 #define STRERROR_ERRNO	( strerror(errno) )      
 
@@ -52,8 +52,8 @@ void TeDumpPrint(const char *file, int line, const char *format, ... );
 #define BTLGREENPRINTF  "\033[36m\033[1m"
 #define NORMALPRINTF    "\033[0m"
 
-#define COLORRED       1 //´íÎó´òÓ¡
-#define COLORGREEN     2 //·µ»ØÕıÈ·´òÓ¡
+#define COLORRED       1 //é”™è¯¯æ‰“å°
+#define COLORGREEN     2 //è¿”å›æ­£ç¡®æ‰“å°
 #define COLORYELLOW    3
 #define COLORBLUE      4
 #define COLORPURPLE    5

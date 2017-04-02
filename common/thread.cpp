@@ -33,10 +33,10 @@ int ThreadCreateSched( pthread_t *threadId,
 }
 
 /***************************************************************************
-* fn	: Ê¹ÓÃ¹«¹²ÓÅÏÈ¼¶ THREAD_PRIORITY_COMMON ´´½¨Ò»¸öÏß³Ì
-* threadId : out, Ïß³ÌID¡£
-* threadFunc : Ïß³Ìº¯Êı
-* arg : Ïß³Ìº¯ÊıµÄ²ÎÊı
+* fn	: ä½¿ç”¨å…¬å…±ä¼˜å…ˆçº§ THREAD_PRIORITY_COMMON åˆ›å»ºä¸€ä¸ªçº¿ç¨‹
+* threadId : out, çº¿ç¨‹IDã€‚
+* threadFunc : çº¿ç¨‹å‡½æ•°
+* arg : çº¿ç¨‹å‡½æ•°çš„å‚æ•°
 *****************************************************************************/
 int ThreadCreateCommonPriority( pthread_t *threadId, void *(*threadFunc)(void*), void *arg )
 {

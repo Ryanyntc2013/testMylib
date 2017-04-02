@@ -2,14 +2,14 @@
 #define __PROCONAPP_H__
 
 #define MAX_JPG_DATA_NODE	    10
-#define MAX_H264_DATA_NODE	    (16 << 1)//(32<<1)//    // ¿¼ÂÇÒôÊÓÆµÍ¬²½
+#define MAX_H264_DATA_NODE	    (16 << 1)//(32<<1)//    // è€ƒè™‘éŸ³è§†é¢‘åŒæ­¥
 #define MAX_MD_DATA_NODE	    8
 #define MAX_IPC_SNAP_DATA_NODE	5
-#define MAX_IPC_SNAP_DATA_SIZE	(512 * 1024) // 512 KBytes µÄ1080p Í¼Æ¬
+#define MAX_IPC_SNAP_DATA_SIZE	(512 * 1024) // 512 KBytes çš„1080p å›¾ç‰‡
 #define MAX_RECORD_DATA_NODE	8
-#define MAX_RECORD_DATA_SIZE	(512 * 1024) // 512 KBytes Ð´Ò»´Î´ÅÅÌ
+#define MAX_RECORD_DATA_SIZE	(512 * 1024) // 512 KBytes å†™ä¸€æ¬¡ç£ç›˜
 #define MAX_YUV_DATA_NODE		8
-#define MAX_YUV_DATA_SIZE	    (720 * 576 * 2) // Ò»Ö¡YUVÊý¾Ý
+#define MAX_YUV_DATA_SIZE	    (720 * 576 * 2) // ä¸€å¸§YUVæ•°æ®
 
 
 void ProconInit();

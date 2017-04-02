@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ÊµÏÖÒ»¸ö¶¨Ê±Æ÷Àà,¾«¶ÈÎª Ãë, Í³¼ÆÊ±¼äÎªÏà¶ÔÊ±¼ä
+**  description  : å®ç°ä¸€ä¸ªå®šæ—¶å™¨ç±»,ç²¾åº¦ä¸º ç§’, ç»Ÿè®¡æ—¶é—´ä¸ºç›¸å¯¹æ—¶é—´
 ********************************************************************************/
 
 #include <stdio.h>
@@ -61,7 +61,7 @@ inline unsigned ClTimer::UpdateTimes( unsigned times, unsigned interval )
 void ClTimer::ExeTimer()
 {
 	TIMER_NODE_T *pCurTimer;
-	if ( m_TimerList != NULL )  // Ë«¼ìËø
+	if ( m_TimerList != NULL )  // åŒæ£€é”
     {
     	pthread_mutex_lock( &m_TimerMutex );
     	if ( m_TimerList != NULL )
@@ -71,9 +71,9 @@ void ClTimer::ExeTimer()
         	while ( NULL != pCurTimer )
             {
             	pCurTimer->elapse = UpdateElapse( pCurTimer->elapse );
-            	if ( pCurTimer->elapse >= pCurTimer->interval )  // ¶¨Ê±Æ÷µ½ÆÚ
+            	if ( pCurTimer->elapse >= pCurTimer->interval )  // å®šæ—¶å™¨åˆ°æœŸ
                 {
-                    ( *(pCurTimer->fun) )( pCurTimer->arg );  // Ö´ĞĞ»Øµ÷º¯Êı	                
+                    ( *(pCurTimer->fun) )( pCurTimer->arg );  // æ‰§è¡Œå›è°ƒå‡½æ•°	                
                 	pCurTimer->elapse = 0;
                 }
                 
@@ -106,12 +106,12 @@ void *ClTimer::TimerProcess()
 }
 
 /*
-* fn: ´´½¨¶¨Ê±Æ÷Ïß³Ì
-* precision: ¾«¶È, TIMER_PRECISION_MS or TIMER_PRECISION_SEC
+* fn: åˆ›å»ºå®šæ—¶å™¨çº¿ç¨‹
+* precision: ç²¾åº¦, TIMER_PRECISION_MS or TIMER_PRECISION_SEC
 */
 int ClTimer::Create( int precision )
 {    
-	if ( m_TimerThread != 0 ) // Èç¹ûÏß³Ì´´½¨³É¹¦ÔòÖ»ÔÊĞí³õÊ¼»¯Ò»´Î
+	if ( m_TimerThread != 0 ) // å¦‚æœçº¿ç¨‹åˆ›å»ºæˆåŠŸåˆ™åªå…è®¸åˆå§‹åŒ–ä¸€æ¬¡
     {
     	pthread_mutex_init( &m_TimerMutex, NULL );
     	if ( precision == TIMER_PRECISION_MS )
@@ -141,14 +141,14 @@ int ClTimer::Destroy()
 }
 
 /*
-* fn: Ìí¼ÓÖ¸¶¨IDºÅµÄ¶¨Ê±Æ÷
-* fun: ¶¨Ê±Æ÷»Øµ÷º¯Êı
-* arg: ¶¨Ê±Æ÷»Øµ÷º¯Êı²ÎÊı
-* second: º¯ÊıÃ¿¸ô¶àÉÙÃëÖ´ĞĞÒ»´Î
-* timerId: out,¶¨Ê±Æ÷½ÚµãID,¸ù¾İËû¿ÉÒÔÕÒµ½ÒÑ¾­add µÄ¶¨Ê±Æ÷½Úµã
-* !!!×¢Òâ: 1. »Øµ÷º¯ÊıfunÖĞ²»ÄÜÔÙ´Îµ÷ÓÃ¶¨Ê±Æ÷ÖĞµÄ½Ó¿Úº¯Êı, ·ñÔò»áÔì³ÉËÀËø !!!
+* fn: æ·»åŠ æŒ‡å®šIDå·çš„å®šæ—¶å™¨
+* fun: å®šæ—¶å™¨å›è°ƒå‡½æ•°
+* arg: å®šæ—¶å™¨å›è°ƒå‡½æ•°å‚æ•°
+* second: å‡½æ•°æ¯éš”å¤šå°‘ç§’æ‰§è¡Œä¸€æ¬¡
+* timerId: out,å®šæ—¶å™¨èŠ‚ç‚¹ID,æ ¹æ®ä»–å¯ä»¥æ‰¾åˆ°å·²ç»add çš„å®šæ—¶å™¨èŠ‚ç‚¹
+* !!!æ³¨æ„: 1. å›è°ƒå‡½æ•°funä¸­ä¸èƒ½å†æ¬¡è°ƒç”¨å®šæ—¶å™¨ä¸­çš„æ¥å£å‡½æ•°, å¦åˆ™ä¼šé€ æˆæ­»é” !!!
             ( Init(), Destroy(), Add(...), Delete(id) )
-           2. ½¨Òé»Øµ÷º¯Êı¾¡Á¿¼òµ¥,²»Òª×èÈû	
+           2. å»ºè®®å›è°ƒå‡½æ•°å°½é‡ç®€å•,ä¸è¦é˜»å¡	
 */
 int ClTimer::Add( TIMER_CMD fun, void *arg, unsigned second, unsigned int *timerId )
 {
@@ -248,7 +248,7 @@ int ClTimer::Delete( unsigned timerId )
 }
 
 
-/* ===== ·â×°Íâ²¿½Ó¿Ú ===== */
+/* ===== å°è£…å¤–éƒ¨æ¥å£ ===== */
 static ClTimer	s_SysRelativeTimer;
 int CreateRTimer( int precision )
 {

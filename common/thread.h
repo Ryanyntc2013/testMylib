@@ -4,12 +4,12 @@
 #include <pthread.h>
 
 //
-// оъЁлсеох╪╤╡ъбт
+// Г╨©Г╗▀Д╪≤Е┘┬Г╨╖Г╜√Г∙╔
 //
 #define	THREAD_SCHED_POLICY		SCHED_FIFO
 
 //
-// оъЁлсеох╪╤╤╗рЕ, сеох╪╤╤╗рЕ╡╩с╕╦ц╦ъсз50.
+// Г╨©Г╗▀Д╪≤Е┘┬Г╨╖Е╝ Д╧┴, Д╪≤Е┘┬Г╨╖Е╝ Д╧┴Д╦█Е╨■Х╞╔И╚≤Д╨▌50.
 #define THREAD_PRIORITY_COMMON	30
 #define THREAD_PRIORITY_WDT		40
 

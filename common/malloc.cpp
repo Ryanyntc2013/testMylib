@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ¶Ômalloc ×åº¯Êı·â×°; Ìá¹©Ö¸Õë¸´ÖÆµÄ½Ó¿Ú
+**  description  : å¯¹malloc æ—å‡½æ•°å°è£…; æä¾›æŒ‡é’ˆå¤åˆ¶çš„æ¥å£
 ********************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +11,7 @@
 #include "mutex.h"
 #include "malloc.h"
 
-/* ===== ¶Ômalloc ×åº¯Êı·â×°²¿·Ö ===== */
+/* ===== å¯¹malloc æ—å‡½æ•°å°è£…éƒ¨åˆ† ===== */
 void *MeAlloc( long nbytes, const char *file, int line )
 {    
 	void *ptr = ( void * )malloc( nbytes );
@@ -43,9 +43,9 @@ void *MeRealloc( void *ptr, long nbytes, const char *file, int line )
         
 	return ptr;
 }
-/* ===== end ¶Ômalloc ×åº¯Êı·â×°²¿·Ö ===== */
+/* ===== end å¯¹malloc æ—å‡½æ•°å°è£…éƒ¨åˆ† ===== */
 
-/* ===== ÓÃÓÚÖ¸Õë¸´ÖÆµÄ²¿·Ö ===== */
+/* ===== ç”¨äºæŒ‡é’ˆå¤åˆ¶çš„éƒ¨åˆ† ===== */
 #define		SHARE_MEMORY_FLAG		0xCCBB2828
 static ClMutexLock	s_ShareMemMutex;
 
@@ -132,11 +132,11 @@ void *ShareMeCopy( void *ptr, const char *file, int line )
     }
 	return NULL;
 }
-/* ===== end ÓÃÓÚÖ¸Õë¸´ÖÆµÄ²¿·Ö ===== */
+/* ===== end ç”¨äºæŒ‡é’ˆå¤åˆ¶çš„éƒ¨åˆ† ===== */
 
 /****************************************************************************
-* ¸ù¾İÄÚ´æµÄÀàĞÍÀ´µ÷ÓÃfree
-* ptr: ±»free µÄÖ¸Õë
+* æ ¹æ®å†…å­˜çš„ç±»å‹æ¥è°ƒç”¨free
+* ptr: è¢«free çš„æŒ‡é’ˆ
 * bShareMem: PDATA_FROM_E
 *****************************************************************************/
 void FreeMs( void *ptr, int bShareMem )

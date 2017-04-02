@@ -9,7 +9,7 @@
 #include "timeExchange.h"
 
 
-//ÈË¹¤ÈÕÆÚ×ª»»³É LINUX UTC Ê±¼ä
+//äººå·¥æ—¥æœŸè½¬æ¢æˆ LINUX UTC æ—¶é—´
 int FiTimeHumanToUtc( int year, int month, int day, int hour, int minute, int second )
 {
 	time_t ret;
@@ -32,7 +32,7 @@ int FiTimeHumanToUtc( int year, int month, int day, int hour, int minute, int se
 }
 
 
-//LINUX UTCÊ±¼ä×ª»»³ÉÈË¹¤ÈÕÆÚ
+//LINUX UTCæ—¶é—´è½¬æ¢æˆäººå·¥æ—¥æœŸ
 void FiTimeUtcToHuman( int utc, int *pyear, int *pmonth, int *pday,
                         	int *phour, int *pminute, int *psecond )
 {
@@ -56,7 +56,7 @@ void FiTimeUtcToHuman( int utc, int *pyear, int *pmonth, int *pday,
 	if ( psecond != NULL )    *psecond = tm.tm_sec;
 }
 
-//LINUX UTCÊ±¼ä×ª»»³ÉÒ»¸öĞÇÆÚµÄµÚ¼¸Ìì
+//LINUX UTCæ—¶é—´è½¬æ¢æˆä¸€ä¸ªæ˜ŸæœŸçš„ç¬¬å‡ å¤©
 void FiTimeUtcToWeekDay( int utc, int *weekday )
 {
 	struct timeval tv;
@@ -74,14 +74,14 @@ void FiTimeUtcToWeekDay( int utc, int *weekday )
         *weekday = tm.tm_wday;    
 }
 
-//LINUX UTCÊ±¼ä×ª»»³ÉÒ»¸öĞÇÆÚµÄµÚ¼¸Ãë
+//LINUX UTCæ—¶é—´è½¬æ¢æˆä¸€ä¸ªæ˜ŸæœŸçš„ç¬¬å‡ ç§’
 int FiTimeUtcToWeekSecond( int utc )
 {
 	return (utc + ONE_DAY_SECOND*4) % (ONE_DAY_SECOND*7);
 }
 
 /************************************************************************
-* fn: ĞİÃß0 ÃëµÄÊ±¼ä,ÓÃÀ´¶àÏß³ÌµÄÊ±·Ö¸´ÓÃµ÷¶È
+* fn: ä¼‘çœ 0 ç§’çš„æ—¶é—´,ç”¨æ¥å¤šçº¿ç¨‹çš„æ—¶åˆ†å¤ç”¨è°ƒåº¦
 *************************************************************************/
 void NanosleepZero()
 {
@@ -90,8 +90,8 @@ void NanosleepZero()
 }
 
 /***************************************************************************
-* »ñÈ¡linux ÏÂdata ÃüÁîÏÔÊ¾µÄÊ±¼ä
-* dtime[20]: ´æ·Å "2013-05-18 18:28:36"
+* è·å–linux ä¸‹data å‘½ä»¤æ˜¾ç¤ºçš„æ—¶é—´
+* dtime[20]: å­˜æ”¾ "2013-05-18 18:28:36"
 *****************************************************************************/
 int TimeGetDatatime( char dtime[20] )
 {  
@@ -111,8 +111,8 @@ int TimeGetDatatime( char dtime[20] )
 }
 
 /*************************************************************************
-* fn: ¼ì²é¸ø¶¨µÄÊ±¼äÊÇ·ñºÏ·¨
-* ·µ»Ø: 0, ·Ç·¨, 1, ºÏ·¨
+* fn: æ£€æŸ¥ç»™å®šçš„æ—¶é—´æ˜¯å¦åˆæ³•
+* è¿”å›: 0, éæ³•, 1, åˆæ³•
 **************************************************************************/
 int TimeIsValidDatetime( int year, int mon, int day, int hour, int min, int sec )
 {
@@ -120,7 +120,7 @@ int TimeIsValidDatetime( int year, int mon, int day, int hour, int min, int sec 
     
 	if ( ((year%4==0)&&(year%100!=0))||(year%400==0) ) 
     {
-    	maxDays[1] += 1; // ÈòÄê
+    	maxDays[1] += 1; // é—°å¹´
     }
     
 	if ( year < 1970 ) return 0;
@@ -134,7 +134,7 @@ int TimeIsValidDatetime( int year, int mon, int day, int hour, int min, int sec 
 }
 
 /*************************************************************************
-* fn: time() º¯Êı·â×°
+* fn: time() å‡½æ•°å°è£…
 **************************************************************************/
 int Time()
 {

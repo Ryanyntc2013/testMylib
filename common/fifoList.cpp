@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.02.17
-**  description  : ÊµÏÖÁËfifoÁ´±í»ùÀà
+**  description  : å®ç°äº†fifoé“¾è¡¨åŸºç±»
 ********************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -120,10 +120,10 @@ int CFifoList::Size()
 }
 
 /*
-* fn: Íùfifo ²åÈëÒ»¸ö½Úµã
-* data: ½ÚµãÊı¾İ,¶Ñ
-* pSize: out, ´æ·Åº¯Êı·µ»Øºófifo ½ÚµãµÄÊıÁ¿
-* ·µ»Ø: -1 or 0
+* fn: å¾€fifo æ’å…¥ä¸€ä¸ªèŠ‚ç‚¹
+* data: èŠ‚ç‚¹æ•°æ®,å †
+* pSize: out, å­˜æ”¾å‡½æ•°è¿”å›åfifo èŠ‚ç‚¹çš„æ•°é‡
+* è¿”å›: -1 or 0
 */
 int CFifoList::Put( void *data, int *pSize )
 {
@@ -133,7 +133,7 @@ int CFifoList::Put( void *data, int *pSize )
     {
     	if( NULL != m_FifoList.front->data )
         {
-        	Free( m_FifoList.front->data ); // ÔÚÉ¾³ıfront½ÚµãÇ°ÏÈÊ©·ÅËüÓµÓĞµÄÊı¾İ
+        	Free( m_FifoList.front->data ); // åœ¨åˆ é™¤frontèŠ‚ç‚¹å‰å…ˆæ–½æ”¾å®ƒæ‹¥æœ‰çš„æ•°æ®
         }
     	nRet = DelNode();
     	SVPrint( "warning: fifoList overflow!\r\n" );
@@ -215,7 +215,7 @@ int CFifoList::AddNode( void *data )
 }
 
 /*
-* fn: É¾³ı¿ªÍ·µÄÄÇ¸ö½Úµã
+* fn: åˆ é™¤å¼€å¤´çš„é‚£ä¸ªèŠ‚ç‚¹
 */
 int CFifoList::DelNode()
 {
@@ -242,7 +242,7 @@ int CFifoList::DelNode()
 }
 
 /*
-* fn: É¾³ı½áÎ²µÄÄÇ¸ö½Úµã, µ«Ã»ÓĞÉ¾³ı¸Ã½ÚµãÖ¸ÏòµÄÊı¾İ
+* fn: åˆ é™¤ç»“å°¾çš„é‚£ä¸ªèŠ‚ç‚¹, ä½†æ²¡æœ‰åˆ é™¤è¯¥èŠ‚ç‚¹æŒ‡å‘çš„æ•°æ®
 */
 int CFifoList::DelNodeRear()
 {

@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.01.17
-**  description  : ·â×°epollÏà¹Øº¯Êı,Ê¹ÓÃ±¾º¯ÊıÇ°Çë²é¿´µ±Ç°ÄÚºË°æ±¾ÊÇ·ñÖ§³Öepoll
+**  description  : å°è£…epollç›¸å…³å‡½æ•°,ä½¿ç”¨æœ¬å‡½æ•°å‰è¯·æŸ¥çœ‹å½“å‰å†…æ ¸ç‰ˆæœ¬æ˜¯å¦æ”¯æŒepoll
 ********************************************************************************/
 
 #ifndef __EPOLLW_H__
@@ -16,35 +16,35 @@ int EpollClose( int epfd );
 int EpollCtl( int epfd, int op, int fd, struct epoll_event *event );
 int EpollWait( int epfd, struct epoll_event *events, int maxevents, int timeout );
 
-/* ===== ÏÂÃæÊÇÎÒ×Ô¼ºµÄ·â×° ===== */
+/* ===== ä¸‹é¢æ˜¯æˆ‘è‡ªå·±çš„å°è£… ===== */
 int EpollCtlAdd( int epfd, int sockfd, uint events );
 int EpollCtlDel( int epfd, int sockfd, uint events );
 int EpollCtlMod( int epfd, int sockfd, uint events );
 
 
-// ÏÂÃæÕâĞ©ºê¡¢ÀàĞÍ¶¼ÔÚ<sys/epoll.h>ÖĞ¶¨Òå,·ÅÔÚÕâÀï½ö½öÎªÁËÊ¶±ğ·½±ã
+// ä¸‹é¢è¿™äº›å®ã€ç±»å‹éƒ½åœ¨<sys/epoll.h>ä¸­å®šä¹‰,æ”¾åœ¨è¿™é‡Œä»…ä»…ä¸ºäº†è¯†åˆ«æ–¹ä¾¿
 #ifdef _sven_EPOLLW_ 
 typedef union epoll_data 
 {
     void *ptr;
-    int fd;                // ĞèÒªepollµÄfd
+    int fd;                // éœ€è¦epollçš„fd
     __uint32_t u32;
     __uint64_t u64;
 } epoll_data_t;
 struct epoll_event 
 {
-    __uint32_t events;      /* Epoll events,¼ûÏÂÃæ EPOLL*** µÄ»ò×éºÏ */
+    __uint32_t events;      /* Epoll events,è§ä¸‹é¢ EPOLL*** çš„æˆ–ç»„åˆ */
     epoll_data_t data;      /* User data variable */
 };
 
-// epoll ÊÂ¼ş
-#define EPOLLIN         //±íÊ¾¶ÔÓ¦µÄÎÄ¼şÃèÊö·û¿ÉÒÔ¶Á£¨°üÀ¨¶Ô¶ËSOCKETÕı³£¹Ø±Õ£©£»
-#define EPOLLOUT	    //±íÊ¾¶ÔÓ¦µÄÎÄ¼şÃèÊö·û¿ÉÒÔĞ´£»
-#define EPOLLPRI	    //±íÊ¾¶ÔÓ¦µÄÎÄ¼şÃèÊö·ûÓĞ½ô¼±µÄÊı¾İ¿É¶Á£¨ÕâÀïÓ¦¸Ã±íÊ¾ÓĞ´øÍâÊı¾İµ½À´£©£»
-#define EPOLLERR	    //±íÊ¾¶ÔÓ¦µÄÎÄ¼şÃèÊö·û·¢Éú´íÎó£»
-#define EPOLLHUP	    //±íÊ¾¶ÔÓ¦µÄÎÄ¼şÃèÊö·û±»¹Ò¶Ï£»
-#define EPOLLET	        //½«#define EPOLLÉèÎª±ßÔµ´¥·¢(Edge Triggered)Ä£Ê½£¬ÕâÊÇÏà¶ÔÓÚË®Æ½´¥·¢(Level Triggered)À´ËµµÄ¡£
-#define EPOLLONESHOT	//Ö»¼àÌıÒ»´ÎÊÂ¼ş£¬µ±¼àÌıÍêÕâ´ÎÊÂ¼şÖ®ºó£¬Èç¹û»¹ĞèÒª¼ÌĞø¼àÌıÕâ¸ö
+// epoll äº‹ä»¶
+#define EPOLLIN         //è¡¨ç¤ºå¯¹åº”çš„æ–‡ä»¶æè¿°ç¬¦å¯ä»¥è¯»ï¼ˆåŒ…æ‹¬å¯¹ç«¯SOCKETæ­£å¸¸å…³é—­ï¼‰ï¼›
+#define EPOLLOUT	    //è¡¨ç¤ºå¯¹åº”çš„æ–‡ä»¶æè¿°ç¬¦å¯ä»¥å†™ï¼›
+#define EPOLLPRI	    //è¡¨ç¤ºå¯¹åº”çš„æ–‡ä»¶æè¿°ç¬¦æœ‰ç´§æ€¥çš„æ•°æ®å¯è¯»ï¼ˆè¿™é‡Œåº”è¯¥è¡¨ç¤ºæœ‰å¸¦å¤–æ•°æ®åˆ°æ¥ï¼‰ï¼›
+#define EPOLLERR	    //è¡¨ç¤ºå¯¹åº”çš„æ–‡ä»¶æè¿°ç¬¦å‘ç”Ÿé”™è¯¯ï¼›
+#define EPOLLHUP	    //è¡¨ç¤ºå¯¹åº”çš„æ–‡ä»¶æè¿°ç¬¦è¢«æŒ‚æ–­ï¼›
+#define EPOLLET	        //å°†#define EPOLLè®¾ä¸ºè¾¹ç¼˜è§¦å‘(Edge Triggered)æ¨¡å¼ï¼Œè¿™æ˜¯ç›¸å¯¹äºæ°´å¹³è§¦å‘(Level Triggered)æ¥è¯´çš„ã€‚
+#define EPOLLONESHOT	//åªç›‘å¬ä¸€æ¬¡äº‹ä»¶ï¼Œå½“ç›‘å¬å®Œè¿™æ¬¡äº‹ä»¶ä¹‹åï¼Œå¦‚æœè¿˜éœ€è¦ç»§ç»­ç›‘å¬è¿™ä¸ª
 
 /* Valid opcodes ( "op" parameter ) to issue to epoll_ctl().  */
 #define EPOLL_CTL_ADD 1	/* Add a file decriptor to the interface.  */

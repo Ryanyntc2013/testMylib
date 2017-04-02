@@ -3,7 +3,7 @@
 
 #include <pthread.h>
 
-// ¶¨Ê±Æ÷Ê±¼ä¾«¶È: ºÁÃë/Ãë
+// å®šæ—¶å™¨æ—¶é—´ç²¾åº¦: æ¯«ç§’/ç§’
 #define	TIMER_PRECISION_MS		1
 #define	TIMER_PRECISION_SEC		1000  
 
@@ -11,11 +11,11 @@ typedef void * (*TIMER_CMD)( void * );
 
 typedef struct timerNode
 {
-	unsigned 	id;            // ¶¨Ê±Æ÷½Úµãid,ÔÚÉ¾³ıÄ³¸ö¶¨Ê±Æ÷½ÚµãµÄÊ±ºòÓÃµ½
-	unsigned 	interval;    // Ã¿¸ô¶à³¤Ê±¼äÖ´ĞĞÒ»´Îº¯Êı,µ¥Î»(´ÎÊı)
-	unsigned	elapse;        // ÏµÍ³´ÓÉÏ´ÎÖ´ĞĞÍêº¯Êıºó×ß¹ıÁË¶àÉÙ´Î
-	TIMER_CMD	fun;        // »Øµ÷º¯Êı
-	void *    	arg;        // »Øµ÷º¯ÊıµÄ²ÎÊı
+	unsigned 	id;            // å®šæ—¶å™¨èŠ‚ç‚¹id,åœ¨åˆ é™¤æŸä¸ªå®šæ—¶å™¨èŠ‚ç‚¹çš„æ—¶å€™ç”¨åˆ°
+	unsigned 	interval;    // æ¯éš”å¤šé•¿æ—¶é—´æ‰§è¡Œä¸€æ¬¡å‡½æ•°,å•ä½(æ¬¡æ•°)
+	unsigned	elapse;        // ç³»ç»Ÿä»ä¸Šæ¬¡æ‰§è¡Œå®Œå‡½æ•°åèµ°è¿‡äº†å¤šå°‘æ¬¡
+	TIMER_CMD	fun;        // å›è°ƒå‡½æ•°
+	void *    	arg;        // å›è°ƒå‡½æ•°çš„å‚æ•°
 	struct timerNode *next;    
 } TIMER_NODE_T;
 

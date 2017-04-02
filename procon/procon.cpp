@@ -1,11 +1,11 @@
 /********************************************************************************
-**  Copyright (c) 2013, �����ж��������Զ������޹�˾, All rights reserved.
+**  Copyright (c) 2013, 深圳市动车电气自动化有限公司, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.09.16
-**  description  : ֧��һ��������->��������ߵ���
-                        Ŀǰֻ֧�ַ������ķ�ʽ,�����ʱ����������
-                        ����չ
+**  description  : 支持一个生产者->多个消费者的类
+                        目前只支持非阻塞的方式,但设计时考虑了阻塞
+                        的扩展
                         procon: producer&consumer
 ********************************************************************************/
 
@@ -69,10 +69,10 @@ CProcon::~CProcon()
 }
 
 /*
-* fn: ��һ��procon ���
-* channel: ���򿪵�ͨ��
-* flag: ��ʽ(OPEN_RDONLY / OPEN_WRONLY)
-* ����: 0, ��ʧ��; ����0, �ɹ�
+* fn: 打开一个procon 句柄
+* channel: 所打开的通道
+* flag: 方式(OPEN_RDONLY / OPEN_WRONLY)
+* 返回: 0, 打开失败; 大于0, 成功
 */
 uint CProcon::Open( int channel, int flag )
 {
@@ -122,8 +122,8 @@ uint CProcon::Open( int channel, int flag )
 }
 
 /*
-* fn: �ر�ProconOpen ���򿪵ľ��
-* fd: ProconOpen �ķ���ֵ
+* fn: 关闭ProconOpen 所打开的句柄
+* fd: ProconOpen 的返回值
 */
 void CProcon::Close( uint fd )
 {
@@ -132,9 +132,9 @@ void CProcon::Close( uint fd )
 }
 
 /*
-* fn: �����ݻ���ػ�ȡһ���ڵ������
-* fd: ProconOpen() ��ֻ����ʽ�򿪵ĵľ��
-* ����: ����ɹ�,�򷵻ػ�ȡ�ڵ��ָ��; ����, ����NULL;
+* fn: 从数据缓冲池获取一个节点的数据
+* fd: ProconOpen() 以只读方式打开的的句柄
+* 返回: 如果成功,则返回获取节点的指针; 否则, 返回NULL;
 */
 PROCON_NODE_T *CProcon::Read( uint fd )
 {
@@ -191,10 +191,10 @@ PROCON_NODE_T *CProcon::Read( uint fd )
 }
 
 /*
-* fn: �������ݻ��������һ���ڵ������
-* fd: ProconOpen() ��ֻд��ʽ�򿪵ĵľ��
-* proDataInfo: ָ�����ݵ�ָ��,����ָ������ݽ��ᱻ���Ƶ�
-	ShareMalloc �������ڴ档
+* fn: 往从数据缓冲池添加一个节点的数据
+* fd: ProconOpen() 以只写方式打开的的句柄
+* proDataInfo: 指向数据的指针,里面指针的数据将会被复制到
+	ShareMalloc 出来的内存。
 */
 int CProcon::Write( uint fd, DATA_PIECE_T proDataInfo )
 {
@@ -268,9 +268,9 @@ int CProcon::Write( uint fd, DATA_PIECE_T proDataInfo )
 }
 
 /*
-* fn: ���Ѿ�����õĽڵ�������
-* fd: ProconOpen() ��ֻд��ʽ�򿪵ĵľ��
-* pExNode: ��ShareMalloc() ����õĽڵ�
+* fn: 把已经分配好的节点插入队列
+* fd: ProconOpen() 以只写方式打开的的句柄
+* pExNode: 用ShareMalloc() 分配好的节点
 */
 int CProcon::Write( uint fd, PROCON_NODE_T *pExNode )
 {
@@ -311,7 +311,7 @@ int CProcon::Write( uint fd, PROCON_NODE_T *pExNode )
 
 
 /*
-* fn: �ͷ�read ������Դ
+* fn: 释放read 到的资源
 */
 void CProcon::Tfree( PROCON_NODE_T *proconNode )
 {
@@ -319,7 +319,7 @@ void CProcon::Tfree( PROCON_NODE_T *proconNode )
 }
 
 /*
-* fn: ��ȡ��ǰд��λ��
+* fn: 获取当前写的位置
 */
 int CProcon::GetWritePos( int channel )
 {

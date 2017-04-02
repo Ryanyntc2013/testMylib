@@ -1,14 +1,14 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ·â×° socketÍ¨ĞÅ Ïà¹Øº¯Êı
+**  description  : å°è£… socketé€šä¿¡ ç›¸å…³å‡½æ•°
 ********************************************************************************/
 
 #include "mutex.h"
 
-/* ===== ¶ÔÆÕÍ¨ËøµÄ·â×° ===== */
+/* ===== å¯¹æ™®é€šé”çš„å°è£… ===== */
 ClMutexLock::ClMutexLock()
 {
 	pthread_mutex_init( &m_mutex, NULL );
@@ -39,9 +39,9 @@ pthread_mutex_t *ClMutexLock::GetMutex()
 	return &m_mutex;
 }
 
-/* ===== end ¶ÔÆÕÍ¨ËøµÄ·â×° ===== */
+/* ===== end å¯¹æ™®é€šé”çš„å°è£… ===== */
 
-/* ===== ¶Ô¶ÁĞ´ËøµÄ·â×° ===== */
+/* ===== å¯¹è¯»å†™é”çš„å°è£… ===== */
 CRwLock::CRwLock()
 {  
     pthread_rwlock_init( &m_rwl, NULL );         
@@ -67,7 +67,7 @@ void CRwLock::Unlock()
     pthread_rwlock_unlock( &m_rwl );
 }
 
-/* ===== end ¶Ô¶ÁĞ´ËøµÄ·â×° ===== */
+/* ===== end å¯¹è¯»å†™é”çš„å°è£… ===== */
 
 CMutexLockRecursive::CMutexLockRecursive()
 {

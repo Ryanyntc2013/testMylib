@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, 深圳市动车电气自动化有限公司, All rights reserved.
+**  Copyright (c) 2013, 娣卞湷甯傚姩杞︾數姘旇嚜鍔ㄥ寲鏈夐檺鍏徃, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.09.16
-**  description  : procon 应用
+**  description  : procon 搴旂敤
 ********************************************************************************/
 
 #include "public.h"

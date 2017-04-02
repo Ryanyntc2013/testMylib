@@ -339,12 +339,12 @@ static void MD5_memset (POINTER output, int value, unsigned int len)
 }
 
 
-/* ===== sven ·â×° ===== */
+/* ===== sven å°è£… ===== */
 /*
-* fn: ½ö½ö°ÑÒ»¸öÃÜÂë·â×°³ÉÒ»¸ömd5 ÃÜÂë
-* passwd: Ô­Ê¼ÃÜÂë
-* md5Passwd: out, md5 ºóµÄÃÜÂë
-* ×¢Òâ: ´Ëº¯ÊıÓĞÏŞÖÆ,ÊäÈëµÄpasswd ±ØĞëÊÇÒÔ'\0' ½áÎ²µÄascii ×Ö·û´®
+* fn: ä»…ä»…æŠŠä¸€ä¸ªå¯†ç å°è£…æˆä¸€ä¸ªmd5 å¯†ç 
+* passwd: åŸå§‹å¯†ç 
+* md5Passwd: out, md5 åçš„å¯†ç 
+* æ³¨æ„: æ­¤å‡½æ•°æœ‰é™åˆ¶,è¾“å…¥çš„passwd å¿…é¡»æ˜¯ä»¥'\0' ç»“å°¾çš„ascii å­—ç¬¦ä¸²
 */
 int Md5Passwd( unsigned char *passwd, unsigned char md5Passwd[16] )
 {
@@ -370,10 +370,10 @@ int Md5Passwd( unsigned char *passwd, unsigned char md5Passwd[16] )
 }
 
 /*
-* fn:¸ù¾İËù¸øµÄÊı¾İ²úÉúMD5 key
-* data: ¸ø¶¨µÄÊı¾İ;
-* dataLen: Êı¾İ³¤¶È
-* key: out,²úÉúµÄMD5 key,³¤¶ÈÎª16¸ö×Ö½Ú
+* fn:æ ¹æ®æ‰€ç»™çš„æ•°æ®äº§ç”ŸMD5 key
+* data: ç»™å®šçš„æ•°æ®;
+* dataLen: æ•°æ®é•¿åº¦
+* key: out,äº§ç”Ÿçš„MD5 key,é•¿åº¦ä¸º16ä¸ªå­—èŠ‚
 */
 #ifndef NULL
     #ifdef __cplusplus

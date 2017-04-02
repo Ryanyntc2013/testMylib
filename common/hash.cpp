@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ·â×°hashËã·¨½Ó¿Ú
+**  description  : å°è£…hashç®—æ³•æ¥å£
 ********************************************************************************/
 
 #include <string.h>
@@ -11,10 +11,10 @@
 #include <stdio.h>
 #include "hash.h"
 /*
-* fn: ×Ö·ûĞÎÊ½µÄhashËã·¨·â×°, H = H(key)
-* key: ÓÃÀ´¼ÆËãhash ÖµµÄ¹Ø¼ü×Ö
-* max: hashµÄ³ÉÔ±¸ñÊı,indexµÄ¸öÊı
-* ·µ»Ø: ÓÉkey ¾­¹ıËã·¨²úÉúµÄhashÖµ,
+* fn: å­—ç¬¦å½¢å¼çš„hashç®—æ³•å°è£…, H = H(key)
+* key: ç”¨æ¥è®¡ç®—hash å€¼çš„å…³é”®å­—
+* max: hashçš„æˆå‘˜æ ¼æ•°,indexçš„ä¸ªæ•°
+* è¿”å›: ç”±key ç»è¿‡ç®—æ³•äº§ç”Ÿçš„hashå€¼,
 */
 int ElfHash( char *key, int max )
 {
@@ -83,7 +83,7 @@ void ClHash::FreeNode( HASH_T *pNode )
     }
 }
 
-/* ×Ö·û´®¿½±´º¯Êı£¬¶¯Ì¬·ÖÅäÄÚ´æ±£´æ¿½±´µÄ×Ö·û´® */
+/* å­—ç¬¦ä¸²æ‹·è´å‡½æ•°ï¼ŒåŠ¨æ€åˆ†é…å†…å­˜ä¿å­˜æ‹·è´çš„å­—ç¬¦ä¸² */
 char *ClHash::StrCopy( const char *pStr ) 
 {
 	int len = strlen( pStr );
@@ -108,7 +108,7 @@ int ClHash::insert( char *pKey, void *pVal, int valSize )
             	break;
             }
         }
-    	if( -1 == ret ) // ¹şÏ£±íÀïÃæ²»´æÔÚ¸Ãkey,Ôò²åÈë
+    	if( -1 == ret ) // å“ˆå¸Œè¡¨é‡Œé¢ä¸å­˜åœ¨è¯¥key,åˆ™æ’å…¥
         {
         	pTable = (HASH_T *)malloc( sizeof(HASH_T) );
         	if( NULL != pTable )
@@ -126,7 +126,7 @@ int ClHash::insert( char *pKey, void *pVal, int valSize )
                     	free( pTable->pKey );
                     	free( pTable );
                     }
-                	else /* ²åÈë³É¹¦ */
+                	else /* æ’å…¥æˆåŠŸ */
                     {
                     	memcpy( pTable->pVal, pVal, valSize );
                     	pTable->next = m_ppTable[index];
@@ -170,7 +170,7 @@ int ClHash::remove( char *pKey )
     	pPreTable = m_ppTable[index];
     	pCurTable = pPreTable->next;
         
-    	if ( strcmp( m_ppTable[index]->pKey, pKey ) == 0 ) // Í·½ÚµãµÄkey¾ÍµÈÓÚÒªÉ¾³ı½ÚµãµÄkey
+    	if ( strcmp( m_ppTable[index]->pKey, pKey ) == 0 ) // å¤´èŠ‚ç‚¹çš„keyå°±ç­‰äºè¦åˆ é™¤èŠ‚ç‚¹çš„key
         {
         	pCurTable = m_ppTable[index];
         	m_ppTable[index] = m_ppTable[index]->next;

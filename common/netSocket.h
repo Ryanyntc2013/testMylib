@@ -6,7 +6,7 @@
 #define SOCKET_BLOCK	0
 #define SOCKET_NOBLOCK	1
 
-#define TCP_CONNECT_TIMEOUT		1 // TCP connect³¬Ê±
+#define TCP_CONNECT_TIMEOUT		1 // TCP connectè¶…æ—¶
 
 int SocketUdpListen( int *pUdpSocket, unsigned short port );
 int SocketUdpListenAddr( int *pUdpSocket, char *ip, unsigned short port );

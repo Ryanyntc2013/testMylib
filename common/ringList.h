@@ -21,7 +21,7 @@ typedef struct ringList
 } RING_LIST;
 
 //
-// »·ĞÎÁ´±íÀà
+// ç¯å½¢é“¾è¡¨ç±»
 //
 class CRingList
 {

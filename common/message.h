@@ -40,8 +40,8 @@ typedef enum _Message_
 
 	MSG_ID_VLOSS_ALARM_PARAM_CHANGE,  //add by jerry  20130531
 	MSG_ID_SHELTER_ALARM_PARAM_CHANGE,  //add by jerry  20130531
-    MSG_ID_NETWORK_CHANGE,      // ÓÃÓÚ¸Ä±äÍøÂçµØÖ·ºó, ÖØÆôÓëÍøÂç´«ÊäÏà¹ØµÄÏß³Ì
-    MSG_ID_REBOOT,              // ÓÃÓÚÖØÆôlinux ÏµÍ³.
+    MSG_ID_NETWORK_CHANGE,      // ç”¨äºæ”¹å˜ç½‘ç»œåœ°å€å, é‡å¯ä¸ç½‘ç»œä¼ è¾“ç›¸å…³çš„çº¿ç¨‹
+    MSG_ID_REBOOT,              // ç”¨äºé‡å¯linux ç³»ç»Ÿ.
 } MSG_ID_EN;
 
 typedef struct msgNode
@@ -55,14 +55,14 @@ typedef struct msgNode
 } MSG_NODE;
 
 
-// ×¨ÃÅÓÃÀ´·¢ËÍÖ¸ÁîĞÍµÄÊı¾İ
+// ä¸“é—¨ç”¨æ¥å‘é€æŒ‡ä»¤å‹çš„æ•°æ®
 typedef struct _MsgCmd_
 {
-	unsigned int 	cmd;            // Ö¸Áî
-	unsigned int 	dataLen;        // Êı¾İ³¤¶È, ĞÅÁîÏß³Ì»áÓÃµ½,ÀıÈçÈç¹ûÊÇ×ª·¢Ö¸Áî,ÄÇÃ´»áÖ¸³ö×ª·¢Êı¾İµÄ³¤¶È
-	unsigned short	index;            // µ±¸øĞÅÁîÏß³Ì·¢ËÍÖ¸ÁîµÄÊ±ºò,Ö¸³ö¶ÔÏóÊÇÄÄ¸öÓÃ»§
-	char	    	unused[2];        // ¶ÔÆë
-	char             *pData;            // ¸ÃÖ¸Áî¶ÔÓ¦µÄÊı¾İ
+	unsigned int 	cmd;            // æŒ‡ä»¤
+	unsigned int 	dataLen;        // æ•°æ®é•¿åº¦, ä¿¡ä»¤çº¿ç¨‹ä¼šç”¨åˆ°,ä¾‹å¦‚å¦‚æœæ˜¯è½¬å‘æŒ‡ä»¤,é‚£ä¹ˆä¼šæŒ‡å‡ºè½¬å‘æ•°æ®çš„é•¿åº¦
+	unsigned short	index;            // å½“ç»™ä¿¡ä»¤çº¿ç¨‹å‘é€æŒ‡ä»¤çš„æ—¶å€™,æŒ‡å‡ºå¯¹è±¡æ˜¯å“ªä¸ªç”¨æˆ·
+	char	    	unused[2];        // å¯¹é½
+	char             *pData;            // è¯¥æŒ‡ä»¤å¯¹åº”çš„æ•°æ®
 } MSG_CMD_T;
 
 class CMessage

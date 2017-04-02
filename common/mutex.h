@@ -3,7 +3,7 @@
 
 #include <pthread.h>
 
-// ÆÕÍ¨Ëø
+// æ™®é€šé”
 class ClMutexLock
 {
 public:
@@ -19,7 +19,7 @@ private:
 };
 
 #define CMutexLock ClMutexLock
-// ¶ÁĞ´Ëø
+// è¯»å†™é”
 class CRwLock  
 {  
 public:  
@@ -33,7 +33,7 @@ private:
     pthread_rwlock_t m_rwl;  
 };
 
-// µİ¹éËø
+// é€’å½’é”
 class CMutexLockRecursive
 {
 public:
@@ -46,7 +46,7 @@ private:
 	pthread_mutex_t m_mutex;
 };
 
-// °²È«Ëø,·ÀÖ¹²úÉúËÀËø
+// å®‰å…¨é”,é˜²æ­¢äº§ç”Ÿæ­»é”
 class CMutexLockGuard
 {
 public:
@@ -64,7 +64,7 @@ private:
 	CMutexLock& m_mutex;
 };
 
-#ifdef _svenXdvs_  // ½ö½öÓÃÀ´·½±ãµ÷ÊÔ¶øÒÑ
+#ifdef _svenXdvs_  // ä»…ä»…ç”¨æ¥æ–¹ä¾¿è°ƒè¯•è€Œå·²
 enum
 {
   PTHREAD_MUTEX_TIMED_NP,

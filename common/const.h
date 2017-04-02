@@ -4,33 +4,33 @@
 typedef unsigned int 	uint;
 typedef unsigned char 	uchar;
 typedef unsigned short  ushort;  
-typedef  char         	sharechar; // ÓÃ»§ShareMalloc
+typedef  char         	sharechar; // ç”¨æˆ·ShareMalloc
 typedef unsigned long long uint64_t;
 
-#define	FI_SUCCESS	        	0	// ³É¹¦
-#define	FI_FAIL	                (-1)    // Ê§°Ü
+#define	FI_SUCCESS	        	0	// æˆåŠŸ
+#define	FI_FAIL	                (-1)    // å¤±è´¥
 #define FI_SUCCESSFUL         	FI_SUCCESS
 #define FI_FAILED	        	FI_FAIL
-#define	FI_TRUE	            	1	// Õæ
-#define	FI_FALSE	        	0	// ¼Ù
+#define	FI_TRUE	            	1	// çœŸ
+#define	FI_FALSE	        	0	// å‡
 
-#define NET_ADDRSIZE         	20	    // "192.168.188.168" ¸ø20¸öbytes;"00:AB:BB:CC:BA:00" ¹²18¸ö×Ö½Ú
-#define MAX_PATH_LEVEL	    	20	    // ×î´óÄ¿Â¼¼¶Êı
-#define COM_BUF_SIZE         	256	    // ³£ÓÃbuf ´óĞ¡
-#define MAX_CHANNEL_NUM	    	16	    // ×î´óÍ¨µÀÊı
-#define DATETIME_LEN	    	20	    // "2013-11-18 10:20:28" µÄ³¤¶È
-#define DATE_LEN	        	12	    // "2013-11-18" µÄ³¤¶È
-#define TIME_LEN	        	12	    // "10:20:28" µÄ³¤¶È
-#define NORMAL_USER_NAME_LEN	32      // Ò»°ãÓÃ»§ÃûµÄ³¤¶È
-#define NORMAL_PASSWD_LEN		32      // Ò»°ãÃÜÂëµÄ³¤¶È
-#define NORMAL_URL_LEN	    	128     // Ò»°ãÓòÃûµÄ³¤¶È
-#define MAX_WEEK_DAY	    	7       //Ò»ÖÜÓĞ7Ìì
-#define MAX_DAY_TIME_SEG		4	    //Ò»ÌìÌá¹©ËÄ¸öÊ±¼ä¶ÎÑ¡Ôñ
+#define NET_ADDRSIZE         	20	    // "192.168.188.168" ç»™20ä¸ªbytes;"00:AB:BB:CC:BA:00" å…±18ä¸ªå­—èŠ‚
+#define MAX_PATH_LEVEL	    	20	    // æœ€å¤§ç›®å½•çº§æ•°
+#define COM_BUF_SIZE         	256	    // å¸¸ç”¨buf å¤§å°
+#define MAX_CHANNEL_NUM	    	16	    // æœ€å¤§é€šé“æ•°
+#define DATETIME_LEN	    	20	    // "2013-11-18 10:20:28" çš„é•¿åº¦
+#define DATE_LEN	        	12	    // "2013-11-18" çš„é•¿åº¦
+#define TIME_LEN	        	12	    // "10:20:28" çš„é•¿åº¦
+#define NORMAL_USER_NAME_LEN	32      // ä¸€èˆ¬ç”¨æˆ·åçš„é•¿åº¦
+#define NORMAL_PASSWD_LEN		32      // ä¸€èˆ¬å¯†ç çš„é•¿åº¦
+#define NORMAL_URL_LEN	    	128     // ä¸€èˆ¬åŸŸåçš„é•¿åº¦
+#define MAX_WEEK_DAY	    	7       //ä¸€å‘¨æœ‰7å¤©
+#define MAX_DAY_TIME_SEG		4	    //ä¸€å¤©æä¾›å››ä¸ªæ—¶é—´æ®µé€‰æ‹©
 #define MAX_RECORD	            4
 #define NORMAL_FILENAME_LEN		80	//
 
 #define REAL_CHANNEL_NUM		4
-#define CHANNEL_ENC_STREAM_NUM  2//Ã¿¸öÍ¨µÀµÄ±àÂëµÄ×î´óÁ÷Êı
+#define CHANNEL_ENC_STREAM_NUM  2//æ¯ä¸ªé€šé“çš„ç¼–ç çš„æœ€å¤§æµæ•°
 
 #define MAX_VENC_CHN_NUM (REAL_CHANNEL_NUM*2)
 #define MAX_AENC_CHN_NUM  REAL_CHANNEL_NUM

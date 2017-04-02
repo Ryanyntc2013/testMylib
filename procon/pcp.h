@@ -6,15 +6,15 @@
 #include "mutex.h"
 #include "ttypes.h"
 
-#define	MAX_PCP_DATA_NODE		16	// Ò»¸öÍ¨µÀ×î¶à»º´æ16 ¸ö½Úµã
-#define ASSUME_CONSUMER_SIZE	1	// ¼Ù¶¨ÓĞ2 ¸öÏû·ÑÕßÏû·ÑËÙ¶È±È½ÏÂı,±£Ö¤ÓĞ8 ¸ö¿ÉÓÃµÄ½Úµã
+#define	MAX_PCP_DATA_NODE		16	// ä¸€ä¸ªé€šé“æœ€å¤šç¼“å­˜16 ä¸ªèŠ‚ç‚¹
+#define ASSUME_CONSUMER_SIZE	1	// å‡å®šæœ‰2 ä¸ªæ¶ˆè´¹è€…æ¶ˆè´¹é€Ÿåº¦æ¯”è¾ƒæ…¢,ä¿è¯æœ‰8 ä¸ªå¯ç”¨çš„èŠ‚ç‚¹
 
 typedef struct _PcpHead_
 {
-	int users;        // µ±Ç°ÓĞ¶àÉÙ¸öÓÃ»§ÕıÔÚÊ¹ÓÃ¸Ã½Úµã
-	int channel;    // ±¾½ÚµãµÄÊı¾İÊÇÊôÓÚÄÄ¸öÍ¨µÀµÄ
-	int type;        // Êı¾İÀàĞÍ,DATA_TYPE_EN ÖĞµÄÆäÖĞÒ»ÖÖ
-	int len;        // ½ÚµãÊı¾İµÄ´óĞ¡	
+	int users;        // å½“å‰æœ‰å¤šå°‘ä¸ªç”¨æˆ·æ­£åœ¨ä½¿ç”¨è¯¥èŠ‚ç‚¹
+	int channel;    // æœ¬èŠ‚ç‚¹çš„æ•°æ®æ˜¯å±äºå“ªä¸ªé€šé“çš„
+	int type;        // æ•°æ®ç±»å‹,DATA_TYPE_EN ä¸­çš„å…¶ä¸­ä¸€ç§
+	int len;        // èŠ‚ç‚¹æ•°æ®çš„å¤§å°	
 } PCP_HEAD_T;
 
 typedef struct _PcpNode_
@@ -74,7 +74,7 @@ private:
 	int m_blockFlag;
 	int m_dataNode;
 	uint m_maxPcpDataNodeSize;
-	PCP_POOL_T *m_pool;     // producer list, Éú²úÕßÁĞ
+	PCP_POOL_T *m_pool;     // producer list, ç”Ÿäº§è€…åˆ—
 	ClMutexLock m_lock;
 };
 

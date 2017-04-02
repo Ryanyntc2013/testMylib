@@ -1,11 +1,11 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.10.10
-**  description  : ·â×°Ìõ¼ş±äÁ¿»ùÀà, ClCondition ºÍ CCondition µÄÇø±ğÊÇ
-	ClCondition: ´øËø
-	CCondition: ²»´øËø
+**  description  : å°è£…æ¡ä»¶å˜é‡åŸºç±», ClCondition å’Œ CCondition çš„åŒºåˆ«æ˜¯
+	ClCondition: å¸¦é”
+	CCondition: ä¸å¸¦é”
 ********************************************************************************/
 
 #include "condition.h" 
@@ -30,10 +30,10 @@ ClCondition::~ClCondition()
 
 /********************************************************************************
 sven explain:
-  1. pthread_cond_wait »áÔÚ×èÈûÇ° unlock m_mutex, ·µ»Øºó»álock m_mutex,
-  2. Èç¹ûÃ»ÓĞ pthread_cleanup_pop( 1 )(»Øµ÷)Pthread_mutex_unlock(m_mutex),ÄÇÃ´¶àÏß³ÌÊ±ÓĞ¿ÉÄÜÔì³ÉËÀËø
-  3. pthread_cleanup_push Ä¿µÄÊÇÎªÁË·ÀÖ¹Ïß³ÌÔÚpthread_cond_wait µÄÊ±ºò±»ÆäËûÏß³Ì¸ÉµôºóÔì³ÉËÀËø
-  4. pthread_mutex_lock ºÍ pthread_cleanup_pop( 1 )(»Øµ÷)Pthread_mutex_unlock(m_mutex)Åä¶ÔÊ¹ÓÃ
+  1. pthread_cond_wait ä¼šåœ¨é˜»å¡å‰ unlock m_mutex, è¿”å›åä¼šlock m_mutex,
+  2. å¦‚æœæ²¡æœ‰ pthread_cleanup_pop( 1 )(å›è°ƒ)Pthread_mutex_unlock(m_mutex),é‚£ä¹ˆå¤šçº¿ç¨‹æ—¶æœ‰å¯èƒ½é€ æˆæ­»é”
+  3. pthread_cleanup_push ç›®çš„æ˜¯ä¸ºäº†é˜²æ­¢çº¿ç¨‹åœ¨pthread_cond_wait çš„æ—¶å€™è¢«å…¶ä»–çº¿ç¨‹å¹²æ‰åé€ æˆæ­»é”
+  4. pthread_mutex_lock å’Œ pthread_cleanup_pop( 1 )(å›è°ƒ)Pthread_mutex_unlock(m_mutex)é…å¯¹ä½¿ç”¨
 *******************************************************************************/
 void ClCondition::Wait()
 {

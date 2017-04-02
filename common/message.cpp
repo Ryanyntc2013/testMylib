@@ -1,9 +1,9 @@
 /********************************************************************************
-**  Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**  Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **  author        :  sven
 **  version       :  v1.0
 **  date           :  2013.01.17
-**  description  : ÏûÏ¢Ä£¿é,Ê¹ÓÃhash ÏûÏ¢.
+**  description  : æ¶ˆæ¯æ¨¡å—,ä½¿ç”¨hash æ¶ˆæ¯.
 ********************************************************************************/
 #include <stdio.h>
 #include <string.h>
@@ -31,7 +31,7 @@ CMessage::~CMessage()
     }
 }
 
-// ÊÍ·ÅÄ³Ò»¸ö½ÚµãÏÂµÄÁ´±í
+// é‡Šæ”¾æŸä¸€ä¸ªèŠ‚ç‚¹ä¸‹çš„é“¾è¡¨
 void CMessage::FreeNode( MSG_NODE* pNode )
 {
 	MSG_NODE* pPrev = NULL;
@@ -87,7 +87,7 @@ int CMessage::Send( int msgId, char* msgBuf, int msgLen )
 	int nodeIndex = GetNodeIndex( msgId );
 	int mutIndex = GetMutexIndex( msgId );
 
-    // ÉÏËø
+    // ä¸Šé”
 	m_Mutex[mutIndex].Lock();
 
 	if ( NULL == m_Node[nodeIndex] )
@@ -106,7 +106,7 @@ int CMessage::Send( int msgId, char* msgBuf, int msgLen )
     	pPrev->next = pNode;
     }
 
-	m_Mutex[mutIndex].Unlock();    // ½âËø	
+	m_Mutex[mutIndex].Unlock();    // è§£é”	
     
 	return msgLen;
 }
@@ -204,8 +204,8 @@ int MessageSend( int nMsgId, char* pMsgBuf, int nMsgLen )
 }
 
 /*
-* fn: ½ÓÊÕÏûÏ¢
-* ·µ»Ø: ´óÓÚµÈÓÚ0,±íÊ¾ÓĞ½ÓÊÕµ½ÏûÏ¢; Ğ¡ÓÚ0,±íÊ¾Ã»ÓĞ½ÓÊÕµ½ÏûÏ¢
+* fn: æ¥æ”¶æ¶ˆæ¯
+* è¿”å›: å¤§äºç­‰äº0,è¡¨ç¤ºæœ‰æ¥æ”¶åˆ°æ¶ˆæ¯; å°äº0,è¡¨ç¤ºæ²¡æœ‰æ¥æ”¶åˆ°æ¶ˆæ¯
 */
 int MessageRecv( int nMsgId, char* pMsgBuf, int nMsgLen )
 {

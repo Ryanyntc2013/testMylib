@@ -1,9 +1,9 @@
 /********************************************************************************
-**	Copyright (c) 2013, ÉîÛÚÊĞ¶¯³µµçÆø×Ô¶¯»¯ÓĞÏŞ¹«Ë¾, All rights reserved.
+**	Copyright (c) 2013, æ·±åœ³å¸‚åŠ¨è½¦ç”µæ°”è‡ªåŠ¨åŒ–æœ‰é™å…¬å¸, All rights reserved.
 **	author        :  sven
 **	version       :  v1.0
 **	date           :  2013.09.17
-**	description  : gb2312¡¢unnicode¡¢utf Ïà¹Ø
+**	description  : gb2312ã€unnicodeã€utf ç›¸å…³
 ********************************************************************************/
 
 #include <assert.h>
@@ -2084,9 +2084,9 @@ void UnicodeToGB2312(char* pOut, unsigned short uData)
 }
 
 /*
-* fn: °ÑÒ»¸ö×Ö·û×ª»¯³Éunicode ×Ö·û
-* pOut: out,×ª»¯ºóµÄunicode ×Ö·û
-* pGb2312Word: Òª×ª»¯µÄÄÇ¸ö×Ö·û
+* fn: æŠŠä¸€ä¸ªå­—ç¬¦è½¬åŒ–æˆunicode å­—ç¬¦
+* pOut: out,è½¬åŒ–åçš„unicode å­—ç¬¦
+* pGb2312Word: è¦è½¬åŒ–çš„é‚£ä¸ªå­—ç¬¦
 */
 void Gb2312ToUnicode( unsigned short* pOut, char *pGb2312Word )
 {
@@ -2100,7 +2100,7 @@ void Gb2312ToUnicode( unsigned short* pOut, char *pGb2312Word )
 
 void UnicodeToUTF_8(char* pOut,unsigned short* pText)
 {
-    // ×¢Òâ WCHAR¸ßµÍ×ÖµÄË³Ğò,µÍ×Ö½ÚÔÚÇ°£¬¸ß×Ö½ÚÔÚºó
+    // æ³¨æ„ WCHARé«˜ä½å­—çš„é¡ºåº,ä½å­—èŠ‚åœ¨å‰ï¼Œé«˜å­—èŠ‚åœ¨å
 	char* pchar = (char *)pText;
 
 	pOut[0] = (0xE0 | ((pchar[1] & 0xF0) >> 4));
@@ -2126,7 +2126,7 @@ void GB2312ToUTF_8(char *pOut,char *pText, int pLen)
 	int j = 0;    
 	while(i < pLen)
     {
-        //Èç¹ûÊÇÓ¢ÎÄÖ±½Ó¸´ÖÆ¾Í¿ÉÒÔ
+        //å¦‚æœæ˜¯è‹±æ–‡ç›´æ¥å¤åˆ¶å°±å¯ä»¥
         //if( *(pText + i) >= 0)
     	if( !(*(pText + i) & 0x80) )
         {
@@ -2189,14 +2189,14 @@ void UTF_8ToGB2312(char *pOut, char *pText, int pLen)
      return; 
 }
 
-/* ===== sven ·â×° ===== */
+/* ===== sven å°è£… ===== */
 /*
-* fn : GB2312 ×ª UTF-8
-* pGb2312: ĞèÒª×ªµÄ×Ö·û´®
-* len: Òª×ªµÄ³¤¶È
-* ppUtf8: out, ·µ»Ø´æ·Å×ª»»ºóµÄÖ¸Õë
-* ·µ»Ø: 
-* ÌØ±ğ×¢Òâ: ÓÃÍêÒÔºóÒªÊÍ·ÅppUtf8 ·µ»ØµÄÖ¸Õë¡£
+* fn : GB2312 è½¬ UTF-8
+* pGb2312: éœ€è¦è½¬çš„å­—ç¬¦ä¸²
+* len: è¦è½¬çš„é•¿åº¦
+* ppUtf8: out, è¿”å›å­˜æ”¾è½¬æ¢åçš„æŒ‡é’ˆ
+* è¿”å›: 
+* ç‰¹åˆ«æ³¨æ„: ç”¨å®Œä»¥åè¦é‡Šæ”¾ppUtf8 è¿”å›çš„æŒ‡é’ˆã€‚
 */
 int Gb2312ToUtf8( char *pGb2312, int len, char **ppUtf8 )
 {
